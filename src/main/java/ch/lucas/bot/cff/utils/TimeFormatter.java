@@ -1,11 +1,23 @@
 package ch.lucas.bot.cff.utils;
 
+/**
+ * Utility class for the time.
+ *
+ * @author Lucas-it@github
+ */
 public class TimeFormatter {
-
     private TimeFormatter() {
         throw new IllegalStateException("Utility class");
     }
 
+    /**
+     * Convert seconds to a formatted time.
+     * 60 seconds become '1 minute'
+     * 1200 seconds become '20 minutes'
+     * 7260 secondes become '2 heures, 1 minute'
+     * @param seconds1 the seconds to convert
+     * @return the formatted time
+     */
     public static String convertSecondsToTime(long seconds1) {
         long months = 0;
         long weeks = 0;
@@ -81,5 +93,4 @@ public class TimeFormatter {
 
         return result.toString();
     }
-
 }

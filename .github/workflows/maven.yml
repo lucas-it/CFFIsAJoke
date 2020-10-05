@@ -16,6 +16,7 @@ on:
       - fix/*
       - release/*
       - '!master'
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
@@ -46,5 +47,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.test.inclusions=src/test/**/Test*.java
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
