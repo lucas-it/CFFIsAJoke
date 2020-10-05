@@ -91,7 +91,7 @@ public class CFFApiUtils {
 
         }
 
-        simpleDateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
+        simpleDateFormat = new SimpleDateFormat("EEEE d MMMM yyyy");
         // Get total travels
         LOGGER.info("getInformationsFromAPI - Get total number of travels");
         int totalTravels = getTotalTravels();
