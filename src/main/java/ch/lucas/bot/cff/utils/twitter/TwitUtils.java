@@ -10,11 +10,21 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * This class contains utility methods for posting tweet.
+ *
+ * @author Lucas-it@github
+ */
 public class TwitUtils {
     private final Logger LOGGER = LoggerFactory.getLogger(TwitUtils.class);
     private final ConfigUtils configUtils;
     private final Twitter twitter;
 
+    /**
+     * Create a new Twit object.
+     *
+     * @param configUtils
+     */
     public TwitUtils(ConfigUtils configUtils) {
         this.configUtils = configUtils;
 
@@ -27,6 +37,12 @@ public class TwitUtils {
         this.twitter = new TwitterFactory(configurationBuilder.build()).getInstance();
     }
 
+    /**
+     * Post a new tweet.
+     * @param message the content of the tweet
+     * @return the twitter status
+     * @throws TweetMaximumLengthExceedException if the tweet is longer than 280 characters.
+     */
     public Status tweet(String message) throws TweetMaximumLengthExceedException {
         LOGGER.info("tweet - Check if the message is not too long");
         if (message.length() > 280) {
@@ -49,6 +65,10 @@ public class TwitUtils {
         return null;
     }
 
+    /**
+     * Get the twitter object.
+     * @return the twitter object
+     */
     public Twitter getTwitter() {
         return twitter;
     }

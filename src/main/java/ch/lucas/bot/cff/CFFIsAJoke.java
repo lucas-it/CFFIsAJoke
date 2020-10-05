@@ -9,6 +9,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
+/**
+ * Principal class of the project. It run the process to tweet the information about disruption.
+ *
+ * @author Lucas-it@github
+ */
 public class CFFIsAJoke {
     private static final Logger LOGGER = LoggerFactory.getLogger(CFFIsAJoke.class);
 

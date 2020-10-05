@@ -21,10 +21,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * This class provide utility methods to get information from SBB api.
+ *
+ * @author Lucas-it@github
+ */
 public class CFFApiUtils {
     private final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
+    /**
+     * Get the information about disruptions from the SBB api about the precedent day.
+     * @return a Message object
+     * @throws IOException where was an error when parsing the API response JSON
+     */
     public Message getInformationsFromAPI() throws IOException {
         // Obtaining travels that are late
         LOGGER.info("getInformationsFromAPI - Initialize connection to SBB API");
@@ -103,6 +113,11 @@ public class CFFApiUtils {
         return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, numberOfLates, (double) Math.round(latePourcent * 100) / 100, TimeFormatter.convertSecondsToTime(cumulativeLate / 1000));
     }
 
+    /**
+     * Get total travels of the precedent day.
+     * Every time a train leave a departure station and arrived at the terminus it's one travel.
+     * @return the number of travel
+     */
     private int getTotalTravels() {
         try {
             // Get all travels from API : around 65000 entries
