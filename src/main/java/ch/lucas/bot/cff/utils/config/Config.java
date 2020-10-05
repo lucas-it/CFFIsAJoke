@@ -13,8 +13,8 @@ import java.io.*;
  *
  * @author Lucas-it@github
  */
-public class ConfigUtils {
-    private final Logger LOGGER = LoggerFactory.getLogger(ConfigUtils.class);
+public class Config {
+    private final Logger LOGGER = LoggerFactory.getLogger(Config.class);
     private File jsonConfigFile;
     private String twitterConsumerKey;
     private String twitterConsumerSecret;
@@ -27,7 +27,7 @@ public class ConfigUtils {
      * Create a new ConfigUtils object.
      * @param jsonConfigFile the path of the json config file
      */
-    public ConfigUtils(File jsonConfigFile) {
+    public Config(File jsonConfigFile) {
         this.jsonConfigFile = jsonConfigFile;
 
         try {

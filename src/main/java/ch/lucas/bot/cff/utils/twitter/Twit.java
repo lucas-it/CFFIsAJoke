@@ -1,6 +1,6 @@
 package ch.lucas.bot.cff.utils.twitter;
 
-import ch.lucas.bot.cff.utils.config.ConfigUtils;
+import ch.lucas.bot.cff.utils.config.Config;
 import ch.lucas.bot.cff.utils.exceptions.TweetMaximumLengthExceedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,24 +15,24 @@ import twitter4j.conf.ConfigurationBuilder;
  *
  * @author Lucas-it@github
  */
-public class TwitUtils {
-    private final Logger LOGGER = LoggerFactory.getLogger(TwitUtils.class);
-    private final ConfigUtils configUtils;
+public class Twit {
+    private final Logger LOGGER = LoggerFactory.getLogger(Twit.class);
+    private final Config config;
     private final Twitter twitter;
 
     /**
      * Create a new Twit object.
      *
-     * @param configUtils
+     * @param config
      */
-    public TwitUtils(ConfigUtils configUtils) {
-        this.configUtils = configUtils;
+    public Twit(Config config) {
+        this.config = config;
 
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-        configurationBuilder.setOAuthConsumerKey(configUtils.getTwitterConsumerKey());
-        configurationBuilder.setOAuthConsumerSecret(configUtils.getTwitterConsumerSecret());
-        configurationBuilder.setOAuthAccessToken(configUtils.getTwitterAccessToken());
-        configurationBuilder.setOAuthAccessTokenSecret(configUtils.getTwitterAccessTokenSecret());
+        configurationBuilder.setOAuthConsumerKey(config.getTwitterConsumerKey());
+        configurationBuilder.setOAuthConsumerSecret(config.getTwitterConsumerSecret());
+        configurationBuilder.setOAuthAccessToken(config.getTwitterAccessToken());
+        configurationBuilder.setOAuthAccessTokenSecret(config.getTwitterAccessTokenSecret());
 
         this.twitter = new TwitterFactory(configurationBuilder.build()).getInstance();
     }
@@ -50,7 +50,7 @@ public class TwitUtils {
         }
 
         LOGGER.info("tweet - Check if the bot is allowed to post tweet (config.json)");
-        if(configUtils.isAllowTweeting()) {
+        if(config.isAllowTweeting()) {
             try {
                 LOGGER.info("tweet - Post the Tweet (update status)");
                 return twitter.updateStatus(message);
