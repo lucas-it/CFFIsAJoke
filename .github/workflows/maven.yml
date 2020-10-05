@@ -16,6 +16,7 @@ on:
       - fix/*
       - release/*
       - '!master'
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
