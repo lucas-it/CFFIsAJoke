@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class TestRowLate {
+public class TestRowLate {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private String recordId = "f9ab33f3d7a39af32e1a1590e3094ab85665f2d5";
     private String stopName = "Basel Bad Bf";
@@ -19,27 +19,27 @@ class TestRowLate {
     public TestRowLate() throws ParseException {}
 
     @Test
-    void testRowLateRecordId() {
+    public void testRowLateRecordId() {
         Assertions.assertEquals(recordId, rowLate.getRecordId());
     }
 
     @Test
-    void testRowLateStopName() {
+    public void testRowLateStopName() {
         Assertions.assertEquals(rowLate.getStopName(), stopName);
     }
 
     @Test
-    void testRowLateLineId() {
+    public void testRowLateLineId() {
         Assertions.assertEquals(rowLate.getLineId(), lineId);
     }
 
     @Test
-    void testRowLateArrivedDate() {
+    public void testRowLateArrivedDate() {
         Assertions.assertEquals(rowLate.getArrivedDate(), arrivedDate);
     }
 
     @Test
-    void testRowLateArrivedProgrammedDate() {
+    public void testRowLateArrivedProgrammedDate() {
         Assertions.assertEquals(rowLate.getArrivedProgrammedDate(), arrivedprogrammedDate);
     }
 }
