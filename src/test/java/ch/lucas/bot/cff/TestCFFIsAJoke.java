@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class TestCFFIsAJoke {
+class TestCFFIsAJoke {
     @Test
-    public void testGetInformationFromApiMethodDontMakeException() {
+    void testGetInformationFromApiMethodDontMakeException() {
         try {
             new CFFApiUtils().getInformationsFromAPI().getFormattedMessage();
             Assertions.assertTrue(true);

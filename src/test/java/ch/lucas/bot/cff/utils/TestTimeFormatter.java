@@ -3,229 +3,229 @@ package ch.lucas.bot.cff.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestTimeFormatter {
+class TestTimeFormatter {
     // Test minutes
 
     @Test
-    public void testConvertSecondsToTimeWith1Min() {
+    void testConvertSecondsToTimeWith1Min() {
         Assertions.assertEquals("1 minute", TimeFormatter.convertSecondsToTime(60), "60 secondes doit être converti en : 1 minute");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith10Mins() {
+    void testConvertSecondsToTimeWith10Mins() {
         Assertions.assertEquals("10 minutes", TimeFormatter.convertSecondsToTime(600), "600 secondes doit être converti en : 10 minutes");
     }
 
     // Test hours
 
     @Test
-    public void testConvertSecondsToTimeWith1Hour() {
+    void testConvertSecondsToTimeWith1Hour() {
         Assertions.assertEquals("1 heure", TimeFormatter.convertSecondsToTime(3600), "3600 secondes doit être converti en : 1 heure");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith1HourAnd1Min() {
+    void testConvertSecondsToTimeWith1HourAnd1Min() {
         Assertions.assertEquals("1 heure, 1 minute", TimeFormatter.convertSecondsToTime(3660), "3660 secondes doit être converti en : 1 heure, 1 minute");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith1HourAnd30Mins() {
+    void testConvertSecondsToTimeWith1HourAnd30Mins() {
         Assertions.assertEquals("1 heure, 30 minutes", TimeFormatter.convertSecondsToTime(5400), "5400 secondes doit être converti en : 1 heure, 30 minutes");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2Hours() {
+    void testConvertSecondsToTimeWith2Hours() {
         Assertions.assertEquals("2 heures", TimeFormatter.convertSecondsToTime(7200), "7200 secondes doit être converti en : 2 heures");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2HoursAnd1Min() {
+    void testConvertSecondsToTimeWith2HoursAnd1Min() {
         Assertions.assertEquals("2 heures, 1 minute", TimeFormatter.convertSecondsToTime(7260), "7260 secondes doit être converti en : 2 heures, 1 minute");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2HoursAnd6Mins() {
+    void testConvertSecondsToTimeWith2HoursAnd6Mins() {
         Assertions.assertEquals("2 heures, 6 minutes", TimeFormatter.convertSecondsToTime(7560), "7560 secondes doit être converti en : 2 heures, 6 minutes");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith12Hours() {
+    void testConvertSecondsToTimeWith12Hours() {
         Assertions.assertEquals("12 heures", TimeFormatter.convertSecondsToTime(43200), "43200 secondes doit être converti en : 12 heures");
     }
 
     // Test days
 
     @Test
-    public void testConvertSecondsToTimeWith1Day() {
+    void testConvertSecondsToTimeWith1Day() {
         Assertions.assertEquals("1 jour", TimeFormatter.convertSecondsToTime(86400), "86400 secondes doit être converti en : 1 jour");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith1DayAnd1Mins() {
+    void testConvertSecondsToTimeWith1DayAnd1Mins() {
         Assertions.assertEquals("1 jour, 1 minute", TimeFormatter.convertSecondsToTime(86460), "86460 secondes doit être converti en : 1 jour, 1 minute");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith1DayAnd2Mins() {
+    void testConvertSecondsToTimeWith1DayAnd2Mins() {
         Assertions.assertEquals("1 jour, 2 minutes", TimeFormatter.convertSecondsToTime(86520), "86520 secondes doit être converti en : 1 jour, 2  minutes");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith1DayAnd1HoursAnd1Mins() {
+    void testConvertSecondsToTimeWith1DayAnd1HoursAnd1Mins() {
         Assertions.assertEquals("1 jour, 1 heure, 1 minute", TimeFormatter.convertSecondsToTime(90060), "86460 secondes doit être converti en : 1 jour, 1 heure, 1 minute");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith1DayAnd2HoursAnd2Mins() {
+    void testConvertSecondsToTimeWith1DayAnd2HoursAnd2Mins() {
         Assertions.assertEquals("1 jour, 2 heures, 2 minutes", TimeFormatter.convertSecondsToTime(93720), "86520 secondes doit être converti en : 1 jour, 2 heures, 2 minutes");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2Days() {
+    void testConvertSecondsToTimeWith2Days() {
         Assertions.assertEquals("2 jours", TimeFormatter.convertSecondsToTime(172800), "172800 secondes doit être converti en : 2 jours");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2DaysAnd1Hour() {
+    void testConvertSecondsToTimeWith2DaysAnd1Hour() {
         Assertions.assertEquals("2 jours, 1 heure", TimeFormatter.convertSecondsToTime(176400), "176400 secondes doit être converti en : 2 jours, 1 heure");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2DaysAnd2Hours() {
+    void testConvertSecondsToTimeWith2DaysAnd2Hours() {
         Assertions.assertEquals("2 jours, 2 heures", TimeFormatter.convertSecondsToTime(180000), "180000 secondes doit être converti en : 2 jours, 2 heures");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2DaysAnd1HourAnd1Mins() {
+    void testConvertSecondsToTimeWith2DaysAnd1HourAnd1Mins() {
         Assertions.assertEquals("2 jours, 1 heure, 1 minute", TimeFormatter.convertSecondsToTime(176460), "176460 secondes doit être converti en : 2 jours, 1 heure, 1 minute");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2DaysAnd1HourAnd2Mins() {
+    void testConvertSecondsToTimeWith2DaysAnd1HourAnd2Mins() {
         Assertions.assertEquals("2 jours, 1 heure, 2 minutes", TimeFormatter.convertSecondsToTime(176520), "176520 secondes doit être converti en : 2 jours, 1 heure, 2 minutes");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2DaysAnd2HoursAnd1Mins() {
+    void testConvertSecondsToTimeWith2DaysAnd2HoursAnd1Mins() {
         Assertions.assertEquals("2 jours, 2 heures, 1 minute", TimeFormatter.convertSecondsToTime(180060), "180060 doit être converti en : 2 jours, 2 heures, 1 minutes");
     }
 
     @Test
-    public void testConvertSecondsToTimeWith2DaysAnd2HoursAnd2Mins() {
+    void testConvertSecondsToTimeWith2DaysAnd2HoursAnd2Mins() {
         Assertions.assertEquals("2 jours, 2 heures, 2 minutes", TimeFormatter.convertSecondsToTime(180120), "180120 doit être converti en : 2 jours, 2 heures, 2 minutes");
     }
 
     // Test weeks
 
     @Test
-    public void testConvertSecondsToTime1Week() {
+    void testConvertSecondsToTime1Week() {
         Assertions.assertEquals("1 semaine", TimeFormatter.convertSecondsToTime(604800));
     }
 
     @Test
-    public void testConvertSecondsToTime1Week1Day() {
+    void testConvertSecondsToTime1Week1Day() {
         Assertions.assertEquals("1 semaine, 1 jour", TimeFormatter.convertSecondsToTime(691200));
     }
 
     @Test
-    public void testConvertSecondsToTime1Week2Days() {
+    void testConvertSecondsToTime1Week2Days() {
         Assertions.assertEquals("1 semaine, 2 jours", TimeFormatter.convertSecondsToTime(777600));
     }
 
     @Test
-    public void testConvertSecondsToTime1Week1Day1Hour() {
+    void testConvertSecondsToTime1Week1Day1Hour() {
         Assertions.assertEquals("1 semaine, 1 jour, 1 heure", TimeFormatter.convertSecondsToTime(694800));
     }
 
     @Test
-    public void testConvertSecondsToTime1Week1Day2Hours() {
+    void testConvertSecondsToTime1Week1Day2Hours() {
         Assertions.assertEquals("1 semaine, 1 jour, 2 heures", TimeFormatter.convertSecondsToTime(698400));
     }
 
     @Test
-    public void testConvertSecondsToTime1Week1Day1Hour1Min() {
+    void testConvertSecondsToTime1Week1Day1Hour1Min() {
         Assertions.assertEquals("1 semaine, 1 jour, 1 heure", TimeFormatter.convertSecondsToTime(694860));
     }
 
     @Test
-    public void testConvertSecondsToTime1Week1Day1Hour2Mins() {
+    void testConvertSecondsToTime1Week1Day1Hour2Mins() {
         Assertions.assertEquals("1 semaine, 1 jour, 1 heure", TimeFormatter.convertSecondsToTime(694920));
     }
 
     @Test
-    public void testConvertSecondsToTime2Week() {
+    void testConvertSecondsToTime2Week() {
         Assertions.assertEquals("2 semaines", TimeFormatter.convertSecondsToTime(1209600));
     }
 
     @Test
-    public void testConvertSecondsToTime2Weeks1Day() {
+    void testConvertSecondsToTime2Weeks1Day() {
         Assertions.assertEquals("2 semaines, 1 jour", TimeFormatter.convertSecondsToTime(1296000));
     }
 
     @Test
-    public void testConvertSecondsToTime2Weeks2Days() {
+    void testConvertSecondsToTime2Weeks2Days() {
         Assertions.assertEquals("2 semaines, 2 jours", TimeFormatter.convertSecondsToTime(1382400));
     }
 
     @Test
-    public void testConvertSecondsToTime2Weeks2Days1Hour() {
+    void testConvertSecondsToTime2Weeks2Days1Hour() {
         Assertions.assertEquals("2 semaines, 2 jours, 1 heure", TimeFormatter.convertSecondsToTime(1386000));
     }
 
     @Test
-    public void testConvertSecondsToTime2Weeks2Days2Hours() {
+    void testConvertSecondsToTime2Weeks2Days2Hours() {
         Assertions.assertEquals("2 semaines, 2 jours, 2 heures", TimeFormatter.convertSecondsToTime(1389600));
     }
 
     @Test
-    public void testConvertSecondsToTime2Weeks2Days2Hours1Min() {
+    void testConvertSecondsToTime2Weeks2Days2Hours1Min() {
         Assertions.assertEquals("2 semaines, 2 jours, 2 heures", TimeFormatter.convertSecondsToTime(1389660));
     }
 
     @Test
-    public void testConvertSecondsToTime2Weeks2Days2Hours2Mins() {
+    void testConvertSecondsToTime2Weeks2Days2Hours2Mins() {
         Assertions.assertEquals("2 semaines, 2 jours, 2 heures", TimeFormatter.convertSecondsToTime(1389720));
     }
 
     // Test months
 
     @Test
-    public void testConvertSecondsToTime1Month() {
+    void testConvertSecondsToTime1Month() {
         Assertions.assertEquals("1 mois", TimeFormatter.convertSecondsToTime(2419200));
     }
 
     @Test
-    public void testConvertSecondsToTime1Month1Week() {
+    void testConvertSecondsToTime1Month1Week() {
         Assertions.assertEquals("1 mois, 1 semaine", TimeFormatter.convertSecondsToTime(3024000));
     }
 
     @Test
-    public void testConvertSecondsToTime1Month1Week1Day() {
+    void testConvertSecondsToTime1Month1Week1Day() {
         Assertions.assertEquals("1 mois, 1 semaine, 1 jour", TimeFormatter.convertSecondsToTime(3110400));
     }
 
     @Test
-    public void testConvertSecondsToTime1Month1Week1Day1Hour() {
+    void testConvertSecondsToTime1Month1Week1Day1Hour() {
         Assertions.assertEquals("1 mois, 1 semaine, 1 jour, 1 heure", TimeFormatter.convertSecondsToTime(3114000));
     }
 
     @Test
-    public void testConvertSecondsToTime2Months() {
+    void testConvertSecondsToTime2Months() {
         Assertions.assertEquals("2 mois", TimeFormatter.convertSecondsToTime(4838400));
     }
 
     @Test
-    public void testConvertSecondsToTime2Months2Weeks() {
+    void testConvertSecondsToTime2Months2Weeks() {
         Assertions.assertEquals("2 mois, 2 semaines", TimeFormatter.convertSecondsToTime(6048000));
     }
 
     @Test
-    public void testConvertSecondsToTime2Month2Weeks2Days() {
+    void testConvertSecondsToTime2Month2Weeks2Days() {
         Assertions.assertEquals("2 mois, 2 semaines, 2 jours", TimeFormatter.convertSecondsToTime(6220800));
     }
 
     @Test
-    public void testConvertSecondsToTime2Months2Weeks2Days2Hours() {
+    void testConvertSecondsToTime2Months2Weeks2Days2Hours() {
         Assertions.assertEquals("2 mois, 2 semaines, 2 jours, 2 heures", TimeFormatter.convertSecondsToTime(6228000));
     }
 }
