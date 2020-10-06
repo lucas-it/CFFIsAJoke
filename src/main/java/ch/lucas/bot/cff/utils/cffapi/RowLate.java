@@ -1,4 +1,4 @@
-package ch.lucas.bot.cff.utils;
+package ch.lucas.bot.cff.utils.cffapi;
 
 import java.util.Date;
 
