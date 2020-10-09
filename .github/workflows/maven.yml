@@ -11,11 +11,6 @@ on:
       - release/*
       - '!master'
   pull_request:
-    branches:
-      - feature/*
-      - fix/*
-      - release/*
-      - '!master'
     types: [opened, synchronize, reopened]
 
 jobs:
