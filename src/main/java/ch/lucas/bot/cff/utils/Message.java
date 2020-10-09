@@ -11,7 +11,9 @@ public class Message {
     private final String cumulatedDelay;
     private final int nbrOfTravels;
     private final int nbrOfDelayedTravels;
+    private final int nbrOfDeletedTravels;
     private final double percentageOfDelay;
+    private final double percentageOfDeletedTravels;
     private final DecimalFormat decimalFormatter = new DecimalFormat("#,###");
 
     /**
@@ -22,12 +24,14 @@ public class Message {
      * @param percentageOfDelay The pourcentage of delayed travels.
      * @param cumulatedDelay The total delayed time. For exemple: 2 hours, 1 minute.
      */
-    public Message(String dateOfReport, int nbrOfTravels, int nbrOfDelayedTravels, double percentageOfDelay, String cumulatedDelay) {
+    public Message(String dateOfReport, int nbrOfTravels, int nbrOfDelayedTravels, int nbrOfDeletedTravels, double percentageOfDelay, double percentageOfDeletedTravels, String cumulatedDelay) {
         this.dateOfReport = dateOfReport;
         this.cumulatedDelay = cumulatedDelay;
         this.nbrOfTravels = nbrOfTravels;
         this.nbrOfDelayedTravels = nbrOfDelayedTravels;
+        this.nbrOfDeletedTravels = nbrOfDeletedTravels;
         this.percentageOfDelay = percentageOfDelay;
+        this.percentageOfDeletedTravels = percentageOfDeletedTravels;
     }
 
     /**
@@ -63,11 +67,27 @@ public class Message {
     }
 
     /**
+     * Get the number of deleted travels.
+     * @return the number of deleted travels.
+     */
+    public int getNbrOfDeletedTravels() {
+        return nbrOfDeletedTravels;
+    }
+
+    /**
      * Get the pourcentage of delay.
      * @return the pourcentage of delay
      */
     public double getPercentageOfDelay() {
         return percentageOfDelay;
+    }
+
+    /**
+     * Get the pourcentage of deleted travels.
+     * @return the pourcentage of deleted travels.
+     */
+    public double getPercentageOfDeletedTravels() {
+        return percentageOfDeletedTravels;
     }
 
     /**
@@ -79,6 +99,7 @@ public class Message {
         String  result = "Retards #cff du " + getDateOfReport() + "\n\n";
                 result += "\uD83D\uDE86 Nombre de voyages: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
                 result += "⏰ Trains en retard: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + (double) Math.round(getPercentageOfDelay() * 100) / 100 + " %)" + "\n";
+                result += "\uD83D\uDDD1️ Trains supprimés: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + (double) Math.round(getPercentageOfDeletedTravels() * 100) / 100 + " %)" + "\n";
                 result += "⏱ Retard cumulé: " + getCumulatedDelay() + "\n";
 
         return result;

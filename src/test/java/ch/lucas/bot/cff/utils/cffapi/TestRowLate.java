@@ -1,5 +1,6 @@
-package ch.lucas.bot.cff.utils;
+package ch.lucas.bot.cff.utils.cffapi;
 
+import ch.lucas.bot.cff.utils.cffapi.RowLate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,21 +26,21 @@ public class TestRowLate {
 
     @Test
     public void testRowLateStopName() {
-        Assertions.assertEquals(rowLate.getStopName(), stopName);
+        Assertions.assertEquals(stopName, rowLate.getStopName());
     }
 
     @Test
     public void testRowLateLineId() {
-        Assertions.assertEquals(rowLate.getLineId(), lineId);
+        Assertions.assertEquals(lineId, rowLate.getLineId());
     }
 
     @Test
     public void testRowLateArrivedDate() {
-        Assertions.assertEquals(rowLate.getArrivedDate(), arrivedDate);
+        Assertions.assertEquals(arrivedDate, rowLate.getArrivedDate());
     }
 
     @Test
     public void testRowLateArrivedProgrammedDate() {
-        Assertions.assertEquals(rowLate.getArrivedProgrammedDate(), arrivedprogrammedDate);
+        Assertions.assertEquals(arrivedprogrammedDate, rowLate.getArrivedProgrammedDate());
     }
 }

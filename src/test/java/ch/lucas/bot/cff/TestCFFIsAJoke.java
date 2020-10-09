@@ -10,7 +10,7 @@ public class TestCFFIsAJoke {
     @Test
     public void testGetInformationFromApiMethodDontMakeException() {
         try {
-            new CFFApiUtils().getInformationsFromAPI().getFormattedMessage();
+            new CFFApiUtils().getInformationFromAPI().getFormattedMessage();
             Assertions.assertTrue(true);
         } catch(IOException e) {
             Assertions.fail();
