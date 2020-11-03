@@ -15,61 +15,30 @@ public class TimeFormatter {
      * 60 seconds become '1 minute'
      * 1200 seconds become '20 minutes'
      * 7260 secondes become '2 heures, 1 minute'
-     * @param seconds1 the seconds to convert
+     * @param seconds the seconds to convert
      * @return the formatted time
      */
-    public static String convertSecondsToTime(long seconds1) {
-        long months = 0;
-        long weeks = 0;
-        long days = 0;
-        long hours = 0;
-        long minutes = 0;
-        long seconds = 0;
-        long seconds2 = seconds1;
+    public static String convertSecondsToTime(long seconds) {
+        long months = seconds / (30 * 24 * 3600);
 
-        while(seconds2 != 0) {
-            seconds++;
+        seconds = seconds % (30 * 24 * 3600);
+        long days = seconds / (24 * 3600);
 
-            if(seconds == 60) {
-                minutes++;
-                seconds = 0;
-            }
-            if(minutes == 60) {
-                hours++;
-                minutes = 0;
-            }
-            if(hours == 24) {
-                days++;
-                hours = 0;
-            }
-            if(days == 7) {
-                weeks++;
-                days = 0;
-            }
-            if(weeks == 4) {
-                months++;
-                weeks = 0;
-            }
+        seconds = seconds % (24 * 3600);
+        long hours = seconds / 3600;
 
-            seconds2--;
-        }
+        seconds %= 3600;
+        long minutes = seconds / 60 ;
 
+        // Format result
         StringBuilder result = new StringBuilder();
         boolean setMins = minutes != 0;
 
         if(months != 0) {
-            if(weeks != 0 || days != 0 || hours != 0) {
+            if(days != 0 || hours != 0) {
                 result.append(months + " mois, ");
             } else {
                 result.append(months + " mois");
-            }
-            setMins = false;
-        }
-        if(weeks != 0) {
-            if(days != 0 || hours != 0) {
-                result.append(weeks + (weeks == 1 ? " semaine, " : " semaines, "));
-            } else {
-                result.append(weeks + (weeks == 1 ? " semaine" : " semaines"));
             }
             setMins = false;
         }
