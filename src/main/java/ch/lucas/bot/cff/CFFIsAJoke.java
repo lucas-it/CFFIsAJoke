@@ -2,7 +2,6 @@ package ch.lucas.bot.cff;
 
 import ch.lucas.bot.cff.utils.cffapi.CFFApiUtils;
 import ch.lucas.bot.cff.utils.config.Config;
-import ch.lucas.bot.cff.utils.exceptions.TweetMaximumLengthExceedException;
 import ch.lucas.bot.cff.utils.twitter.Twit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +49,7 @@ public class CFFIsAJoke {
         try {
             twit.tweet(new CFFApiUtils().getInformationFromAPI().getFormattedMessage());
             LOGGER.info("The Tweet has been posted");
-        } catch (IOException | TweetMaximumLengthExceedException e) {
+        } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         }
 

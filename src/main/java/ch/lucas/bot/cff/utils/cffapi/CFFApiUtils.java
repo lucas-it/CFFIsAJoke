@@ -28,23 +28,54 @@ import java.util.*;
 public class CFFApiUtils {
     private final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private DisruptionStats disruptionStats;
+    private int deletedTravels;
+    private int totalTravels;
 
     /**
      * Get the information about disruptions from the SBB api about the precedent day.
      * @return a Message object
      * @throws IOException error while connecting to the SBB API
      */
-    public Message getInformationFromAPI() throws IOException {
-        // Get number of delayed travels and cumulated delay
-        LOGGER.info("getInformationFromAPI - Get disruption statistics");
-        DisruptionStats disruptionStats = getDisruptionStats();
-        // Get number of deleted travels
-        LOGGER.info("getInformationAPI - Get total number of deleted travels");
-        int deletedTravels = getDeletedTravels();
-        // Get total travels
-        LOGGER.info("getInformationFromAPI - Get total number of travels");
-        int totalTravels = getTotalTravels();
-        // Format date
+    public Message getInformationFromAPI() throws IOException, InterruptedException {
+        Thread t1 = new Thread(() -> {
+            try {
+                LOGGER.info("getInformationFromAPI - Get disruption statistics");
+                disruptionStats = getDisruptionStats();
+            } catch(IOException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            try {
+                LOGGER.info("getInformationAPI - Get total number of deleted travels");
+                deletedTravels = getDeletedTravels();
+            } catch(IOException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        });
+
+        Thread t3 = new Thread(() -> {
+            try {
+                LOGGER.info("getInformationFromAPI - Get total number of travels");
+                totalTravels = getTotalTravels();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        // Start threads
+        t1.start();
+        t2.start();
+        t3.start();
+
+        // Waiting for the end of each thread
+        t1.join();
+        t2.join();
+        t3.join();
+
+        // Date formatting
         simpleDateFormat = new SimpleDateFormat("EEEE d MMMM yyyy");
         // Calcul pourcentage of delayed travels
         LOGGER.info("getInformationFromAPI - Calcul pourcentage of late travels");
@@ -54,7 +85,7 @@ public class CFFApiUtils {
         double deletedPourcent = ((double) deletedTravels / totalTravels) * 100;
         // Create a new message
         LOGGER.info("getInformationFromAPI - Create a new message with all information");
-        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000));
+        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(),deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000));
     }
 
     /**
