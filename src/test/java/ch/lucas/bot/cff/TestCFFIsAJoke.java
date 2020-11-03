@@ -4,15 +4,13 @@ import ch.lucas.bot.cff.utils.cffapi.CFFApiUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 public class TestCFFIsAJoke {
     @Test
     public void testGetInformationFromApiMethodDontMakeException() {
         try {
             new CFFApiUtils().getInformationFromAPI().getFormattedMessage();
             Assertions.assertTrue(true);
-        } catch(IOException e) {
+        } catch(Exception e) {
             Assertions.fail();
         }
     }
