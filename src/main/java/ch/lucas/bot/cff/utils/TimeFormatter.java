@@ -35,26 +35,17 @@ public class TimeFormatter {
         boolean setMins = minutes != 0;
 
         if(months != 0) {
-            if(days != 0 || hours != 0) {
-                result.append(months + " mois, ");
-            } else {
-                result.append(months + " mois");
-            }
+            result.append(months + " mois");
+            result.append(days != 0 || hours != 0 ? ", " : "");
             setMins = false;
         }
         if(days != 0) {
-            if(hours != 0 || setMins) {
-                result.append(days + (days == 1 ? " jour, " : " jours, "));
-            } else {
-                result.append(days + (days == 1 ? " jour" : " jours"));
-            }
+            result.append(days + (days == 1 ? " jour" : " jours"));
+            result.append(hours != 0 || setMins ? ", " : "");
         }
         if(hours != 0) {
-            if(setMins) {
-                result.append(hours + (hours == 1 ? " heure, " : " heures, "));
-            } else {
-                result.append(hours + (hours == 1 ? " heure" : " heures"));
-            }
+            result.append(hours + (hours == 1 ? " heure" : " heures"));
+            result.append(setMins ? ", " : "");
         }
         if(setMins) {
             result.append(minutes + (minutes == 1 ? " minute" : " minutes"));
