@@ -45,5 +45,4 @@ public class TestConfig {
             Assertions.assertTrue(true);
         }
     }
-
 }

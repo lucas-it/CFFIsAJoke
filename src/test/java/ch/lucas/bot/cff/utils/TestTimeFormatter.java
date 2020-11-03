@@ -1,6 +1,5 @@
 package ch.lucas.bot.cff.utils;
 
-import ch.lucas.bot.cff.utils.exceptions.TweetMaximumLengthExceedException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
