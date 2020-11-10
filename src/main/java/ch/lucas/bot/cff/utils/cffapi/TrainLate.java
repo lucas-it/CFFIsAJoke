@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Lucas-it@github
  */
-public class RowLate {
+public class TrainLate {
 
     private final String recordId;
     private final String stopName;
@@ -23,7 +23,7 @@ public class RowLate {
      * @param arrivedDate the time the train arrived at the station
      * @param arrivedProgrammedDate the scheduled arrival time of the train at the station
      */
-    public RowLate(String recordId, String stopName, int lineId, Date arrivedDate, Date arrivedProgrammedDate) {
+    public TrainLate(String recordId, String stopName, int lineId, Date arrivedDate, Date arrivedProgrammedDate) {
         this.recordId = recordId;
         this.stopName = stopName;
         this.lineId = lineId;
