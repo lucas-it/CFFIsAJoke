@@ -19,6 +19,7 @@ import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This class provide utility methods to get information from SBB api.
@@ -85,7 +86,7 @@ public class CFFApiUtils {
         double deletedPourcent = ((double) deletedTravels / totalTravels) * 100;
         // Create a new message
         LOGGER.info("getInformationFromAPI - Create a new message with all information");
-        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(),deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000));
+        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000));
     }
 
     /**
@@ -106,13 +107,9 @@ public class CFFApiUtils {
         LOGGER.info("getDisruptionStats - Parse API response to JSON");
         JsonArray recordsLates = JsonParser.parseReader(br).getAsJsonObject().getAsJsonArray("records");
 
-        // Defin number of lates
         long cumulativeLate = 0;
         int numberOfDelayedTravels = 0;
-        int lastLineId = 0;
-
-        RowLate lastLostRow = null;
-        LinkedList<RowLate> lastRows = new LinkedList<>();
+        List<TrainLate> delayedTrains = new ArrayList<>();
 
         LOGGER.info("getDisruptionStats - Process late travels data");
         for(JsonElement jsonElement : recordsLates) {
@@ -122,41 +119,29 @@ public class CFFApiUtils {
                 int lineId = fields.get("linien_id").getAsInt();
                 String stopName = fields.get("haltestellen_name").getAsString();
                 Date arrivedProgrammedDate = simpleDateFormat.parse(fields.get("ankunftszeit").getAsString());
-                Date arrivedDate = simpleDateFormat.parse(fields.get("an_prognose").getAsString());
+                Date arrivedDate = null;
+                arrivedDate = simpleDateFormat.parse(fields.get("an_prognose").getAsString());
 
-                if(lastLostRow != null && !lastRows.contains(lastLostRow)) {
-                    lastRows.add(lastLostRow);
-                }
-
-                if(lastRows.isEmpty()) {
-                    lastRows.add(new RowLate(recordId, stopName, lineId, arrivedDate, arrivedProgrammedDate));
-                    lastLineId = lineId;
-                } else if(lastLineId == lineId) {
-                    lastRows.add(new RowLate(recordId, stopName, lineId, arrivedDate, arrivedProgrammedDate));
-                } else {
-                    lastLostRow = new RowLate(recordId, stopName, lineId, arrivedDate, arrivedProgrammedDate);
-                }
-
-                if(lastLineId != lineId) {
-                    Date lateArrivedProgrammedDate = simpleDateFormat.parse("2000-01-01T00:00:00");
-
-                    for(RowLate rowLate : lastRows) {
-                        if(rowLate.getArrivedProgrammedDate().getTime() > lateArrivedProgrammedDate.getTime()) {
-                            lateArrivedProgrammedDate = rowLate.getArrivedProgrammedDate();
-                        }
-                    }
-
-                    lastRows.clear();
-
-                    cumulativeLate += lastLostRow.getArrivedDate().getTime() - lastLostRow.getArrivedProgrammedDate().getTime();
-                    numberOfDelayedTravels++;
-                }
-
-                lastLineId = lineId;
+                delayedTrains.add(new TrainLate(recordId, stopName, lineId, arrivedDate, arrivedProgrammedDate));
             } catch(ParseException e) {
                 LOGGER.error(e.getMessage(), e);
             }
         }
+
+        /* Group every trains stop by lineId (int) */
+        Map<Integer, List<TrainLate>> delayedTrainsPerLineId = delayedTrains.stream().collect(Collectors.groupingBy(TrainLate::getLineId));
+
+        /* Calcul the cumulated delay */
+        for(Map.Entry<Integer, List<TrainLate>> entry : delayedTrainsPerLineId.entrySet()) {
+            delayedTrains = entry.getValue();
+
+            /* Get the late when the train reach the terminus -> take the highest date */
+            TrainLate delayedTrain = Collections.max(delayedTrains, Comparator.comparing(TrainLate::getArrivedProgrammedDate));
+
+            cumulativeLate += delayedTrain.getArrivedDate().getTime() - delayedTrain.getArrivedProgrammedDate().getTime();
+        }
+
+        numberOfDelayedTravels = delayedTrainsPerLineId.size();
 
         return new DisruptionStats(numberOfDelayedTravels, cumulativeLate);
     }
