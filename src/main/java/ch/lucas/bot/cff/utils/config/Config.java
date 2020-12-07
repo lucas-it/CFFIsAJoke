@@ -61,7 +61,7 @@ public class Config {
      * Get the SBB API key.
      * @return the ssb api key
      */
-    public String getSbbApiKey() { return sbbApiKey; }
+    public String getSBBApiKey() { return sbbApiKey; }
 
     /**
      * Get the path of the json config file.
@@ -103,6 +103,7 @@ public class Config {
      * Get if the config file is valid.
      * The file is valid if it's contains all of these parameters:
      * <ul>
+     *     <li>sbbApiKey</li>
      *     <li>twitterConsumerKey</li>
      *     <li>twitterConsumerSecret</li>
      *     <li>twitterAccessToken</li>
@@ -111,5 +112,5 @@ public class Config {
      * </ul>
      * @return the config is valid or not
      */
-    public boolean isConfigIsValid() { return configIsValid; }
+    public boolean isConfigValid() { return configIsValid; }
 }

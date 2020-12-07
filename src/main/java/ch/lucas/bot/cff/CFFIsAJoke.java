@@ -31,7 +31,7 @@ public class CFFIsAJoke {
         if(configFile.exists()) {
             LOGGER.info("Initialize configuration utilities");
             config = new Config(configFile);
-            if(!config.isConfigIsValid()) {
+            if(!config.isConfigValid()) {
                 LOGGER.error("Config file is not valid. Can't continue.");
                 System.exit(-1);
             }
