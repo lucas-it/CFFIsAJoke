@@ -31,7 +31,7 @@ public class CFFIsAJoke {
         if(configFile.exists()) {
             LOGGER.info("Initialize configuration utilities");
             config = new Config(configFile);
-            if(!config.isConfigIsValid()) {
+            if(!config.isConfigValid()) {
                 LOGGER.error("Config file is not valid. Can't continue.");
                 System.exit(-1);
             }
@@ -47,7 +47,7 @@ public class CFFIsAJoke {
         long start = System.currentTimeMillis();
 
         try {
-            twit.tweet(new CFFApiUtils().getInformationFromAPI().getFormattedMessage());
+            twit.tweet(new CFFApiUtils(config).getInformationFromAPI().getFormattedMessage());
             LOGGER.info("The Tweet has been posted");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);

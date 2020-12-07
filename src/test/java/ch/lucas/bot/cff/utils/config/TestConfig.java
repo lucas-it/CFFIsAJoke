@@ -1,6 +1,5 @@
 package ch.lucas.bot.cff.utils.config;
 
-import ch.lucas.bot.cff.CFFIsAJoke;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +15,7 @@ public class TestConfig {
     public void testConfigOK() {
         Config config = new Config(configFileOK);
 
+        Assertions.assertEquals("1a2b3c", config.getSBBApiKey());
         Assertions.assertEquals("123", config.getTwitterConsumerKey());
         Assertions.assertEquals("456", config.getTwitterConsumerSecret());
         Assertions.assertEquals("789", config.getTwitterAccessToken());
@@ -28,7 +28,7 @@ public class TestConfig {
     public void testConfigBadFormat() {
         try {
             Config config = new Config(configFileBadFormat);
-            if(!config.isConfigIsValid()) Assertions.assertTrue(true);
+            if(!config.isConfigValid()) Assertions.assertTrue(true);
             Assertions.fail();
         } catch(Exception e) {
             Assertions.assertTrue(true);
@@ -39,7 +39,7 @@ public class TestConfig {
     public void testConfigMissingParameters() {
         try {
             Config config = new Config(configFileMissingParameters);
-            if(!config.isConfigIsValid()) Assertions.assertTrue(true);
+            if(!config.isConfigValid()) Assertions.assertTrue(true);
             Assertions.fail();
         } catch(Exception e) {
             Assertions.assertTrue(true);

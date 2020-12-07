@@ -16,6 +16,7 @@ import java.io.*;
 public class Config {
     private final Logger LOGGER = LoggerFactory.getLogger(Config.class);
     private File jsonConfigFile;
+    private String sbbApiKey;
     private String twitterConsumerKey;
     private String twitterConsumerSecret;
     private String twitterAccessToken;
@@ -34,7 +35,8 @@ public class Config {
             JsonElement jsonParser = JsonParser.parseReader(new FileReader(jsonConfigFile));
             if(jsonParser.isJsonObject()) {
                 JsonObject jsonConfig = jsonParser.getAsJsonObject();
-                if(jsonConfig.has("twitterConsumerKey") && jsonConfig.has("twitterConsumerSecret") && jsonConfig.has("twitterAccessToken") && jsonConfig.has("twitterAccessTokenSecret") && jsonConfig.has("allowTweeting")) {
+                if(jsonConfig.has("sbbApiKey") && jsonConfig.has("twitterConsumerKey") && jsonConfig.has("twitterConsumerSecret") && jsonConfig.has("twitterAccessToken") && jsonConfig.has("twitterAccessTokenSecret") && jsonConfig.has("allowTweeting")) {
+                    sbbApiKey = jsonConfig.get("sbbApiKey").getAsString();
                     twitterConsumerKey = jsonConfig.get("twitterConsumerKey").getAsString();
                     twitterConsumerSecret = jsonConfig.get("twitterConsumerSecret").getAsString();
                     twitterAccessToken = jsonConfig.get("twitterAccessToken").getAsString();
@@ -54,6 +56,12 @@ public class Config {
             LOGGER.error(e.getMessage(), e);
         }
     }
+
+    /**
+     * Get the SBB API key.
+     * @return the ssb api key
+     */
+    public String getSBBApiKey() { return sbbApiKey; }
 
     /**
      * Get the path of the json config file.
@@ -95,6 +103,7 @@ public class Config {
      * Get if the config file is valid.
      * The file is valid if it's contains all of these parameters:
      * <ul>
+     *     <li>sbbApiKey</li>
      *     <li>twitterConsumerKey</li>
      *     <li>twitterConsumerSecret</li>
      *     <li>twitterAccessToken</li>
@@ -103,5 +112,5 @@ public class Config {
      * </ul>
      * @return the config is valid or not
      */
-    public boolean isConfigIsValid() { return configIsValid; }
+    public boolean isConfigValid() { return configIsValid; }
 }
