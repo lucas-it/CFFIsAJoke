@@ -2,6 +2,7 @@ package ch.lucas.bot.cff.utils.cffapi;
 
 import ch.lucas.bot.cff.utils.Message;
 import ch.lucas.bot.cff.utils.TimeFormatter;
+import ch.lucas.bot.cff.utils.config.Config;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -29,16 +30,24 @@ import java.util.stream.Collectors;
 public class CFFApiUtils {
     private final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private Config config;
     private DisruptionStats disruptionStats;
     private int deletedTravels;
     private int totalTravels;
+
+    /**
+     * @param config the configuration object which contain SBB API key
+     */
+    public CFFApiUtils(Config config) {
+        this.config = config;
+    }
 
     /**
      * Get the information about disruptions from the SBB api about the precedent day.
      * @return a Message object
      * @throws IOException error while connecting to the SBB API
      */
-    public Message getInformationFromAPI() throws IOException, InterruptedException {
+    public Message getInformationFromAPI() throws InterruptedException {
         Thread t1 = new Thread(() -> {
             try {
                 LOGGER.info("getInformationFromAPI - Get disruption statistics");
@@ -97,7 +106,7 @@ public class CFFApiUtils {
     private DisruptionStats getDisruptionStats() throws IOException {
         // Obtaining travels that are late
         LOGGER.info("getDisruptionStats - Initialize connection to SBB API");
-        URL url = new URL("https://data.sbb.ch/api/records/1.0/search/?dataset=ist-daten-sbb&q=&rows=10000&sort=-linien_id&facet=betreiber_id&facet=produkt_id&facet=linien_id&facet=linien_text&facet=verkehrsmittel_text&facet=faellt_aus_tf&facet=bpuic&facet=ankunftszeit&facet=an_prognose&facet=an_prognose_status&facet=ab_prognose_status&facet=ankunftsverspatung&facet=abfahrtsverspatung&refine.produkt_id=Zug&refine.ankunftsverspatung=true");
+        URL url = new URL("https://data.sbb.ch/api/records/1.0/search/?dataset=ist-daten-sbb&q=&rows=10000&sort=-linien_id&facet=betreiber_id&facet=produkt_id&facet=linien_id&facet=linien_text&facet=verkehrsmittel_text&facet=faellt_aus_tf&facet=bpuic&facet=ankunftszeit&facet=an_prognose&facet=an_prognose_status&facet=ab_prognose_status&facet=ankunftsverspatung&facet=abfahrtsverspatung&refine.produkt_id=Zug&refine.ankunftsverspatung=true&apikey=" + config.getSbbApiKey());
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -154,7 +163,7 @@ public class CFFApiUtils {
     private int getDeletedTravels() throws IOException {
         // Obtaining travels that are late
         LOGGER.info("getDisruptionStats - Initialize connection to SBB API");
-        URL url = new URL("https://data.sbb.ch/api/records/1.0/search/?dataset=ist-daten-sbb&q=&rows=10000&sort=-linien_id&facet=betreiber_id&facet=linien_id&facet=faellt_aus_tf&facet=ankunftszeit&facet=an_prognose&facet=ankunftsverspatung&facet=abfahrtsverspatung&refine.faellt_aus_tf=true");
+        URL url = new URL("https://data.sbb.ch/api/records/1.0/search/?dataset=ist-daten-sbb&q=&rows=10000&sort=-linien_id&facet=betreiber_id&facet=linien_id&facet=faellt_aus_tf&facet=ankunftszeit&facet=an_prognose&facet=ankunftsverspatung&facet=abfahrtsverspatung&refine.faellt_aus_tf=true&apikey=" + config.getSbbApiKey());
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -192,7 +201,7 @@ public class CFFApiUtils {
     private int getTotalTravels() throws IOException {
         // Get all travels from API : around 65000 entries
         LOGGER.info("getTotalTravels - Initialize connection to SBB API");
-        URL allDataJSON = new URL("https://data.sbb.ch/explore/dataset/ist-daten-sbb/download/?format=json&timezone=Europe/Berlin&lang=fr&sort=-linien_id");
+        URL allDataJSON = new URL("https://data.sbb.ch/explore/dataset/ist-daten-sbb/download/?format=json&timezone=Europe/Berlin&lang=fr&sort=-linien_id&apikey=" + config.getSbbApiKey());
         URLConnection allDataJSONConn = allDataJSON.openConnection();
 
         // Parse JSON
