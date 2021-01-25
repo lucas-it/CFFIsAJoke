@@ -97,7 +97,7 @@ public class Message {
      */
     public String getFormattedMessage() {
         LOGGER.info("getFormattedMessage - Format message");
-        String  result = "Retards #cff du " + getDateOfReport() + "\n\n";
+        String  result = "Retards #CFF #SBB #FFS du " + getDateOfReport() + "\n\n";
                 result += "\uD83D\uDE86 Nombre de voyages: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
                 result += "⏰ Trains en retard: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + (double) Math.round(getPercentageOfDelay() * 100) / 100 + " %)" + "\n";
                 result += "\uD83D\uDDD1️ Trains supprimés: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + (double) Math.round(getPercentageOfDeletedTravels() * 100) / 100 + " %)" + "\n";
