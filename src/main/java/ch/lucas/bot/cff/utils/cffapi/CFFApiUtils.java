@@ -72,7 +72,7 @@ public class CFFApiUtils {
                 LOGGER.info("getInformationFromAPI - Get total number of travels");
                 totalTravels = getTotalTravels();
             } catch(IOException e) {
-                e.printStackTrace();
+                LOGGER.error(e.getMessage(), e);
             }
         });
 
