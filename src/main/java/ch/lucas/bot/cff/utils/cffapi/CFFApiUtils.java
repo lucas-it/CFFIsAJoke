@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * This class provide utility methods to get information from SBB api.
@@ -138,17 +139,12 @@ public class CFFApiUtils {
         }
 
         /* Group every trains stop by lineId (int) */
-        Map<Integer, List<TrainLate>> delayedTrainsPerLineId = delayedTrains.stream().collect(Collectors.groupingBy(TrainLate::getLineId));
+        Map<Integer, List<TrainLate>> delayedTrainsPerLineId = delayedTrains.parallelStream().collect(Collectors.groupingBy(TrainLate::getLineId));
 
-        /* Calcul the cumulated delay */
-        for(Map.Entry<Integer, List<TrainLate>> entry : delayedTrainsPerLineId.entrySet()) {
-            delayedTrains = entry.getValue();
-
-            /* Get the late when the train reach the terminus -> take the highest date */
-            TrainLate delayedTrain = Collections.max(delayedTrains, Comparator.comparing(TrainLate::getArrivedProgrammedDate));
-
-            cumulativeLate += delayedTrain.getArrivedDate().getTime() - delayedTrain.getArrivedProgrammedDate().getTime();
-        }
+        /* Calculate the cumulated delay */
+        cumulativeLate = delayedTrainsPerLineId.entrySet().parallelStream()
+                .map(e -> Collections.max(delayedTrains, Comparator.comparing(TrainLate::getArrivedProgrammedDate)))
+                .mapToLong(delayedTrain -> delayedTrain.getArrivedDate().getTime() - delayedTrain.getArrivedProgrammedDate().getTime()).sum();
 
         numberOfDelayedTravels = delayedTrainsPerLineId.size();
 
@@ -214,11 +210,9 @@ public class CFFApiUtils {
         List<Integer> linesId = new ArrayList<>();
 
         LOGGER.info("getTotalTravels - Process data");
-        for(JsonElement jsonElement : records) {
-            int lineId = jsonElement.getAsJsonObject().get("fields").getAsJsonObject().get("linien_id").getAsInt();
-
-            if(!linesId.contains(lineId)) linesId.add(lineId);
-        }
+        StreamSupport.stream(records.spliterator(), true).parallel().map(r -> r.getAsJsonObject().get("fields").getAsJsonObject().get("linien_id").getAsInt()).forEach(l -> {
+            if(!linesId.contains(l)) linesId.add(l);
+        });
 
         int nbrOfTravels = linesId.size();
 
