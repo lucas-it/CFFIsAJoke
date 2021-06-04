@@ -52,6 +52,8 @@ public class CFFIsAJoke {
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);
             Thread.currentThread().interrupt();
+        } catch (TweetMaximumLengthExceedException e) {
+            LOGGER.error(e.getMessage(), e);   
         }
 
         LOGGER.info("Processing time : {} s", (System.currentTimeMillis() - start) / 1000);
