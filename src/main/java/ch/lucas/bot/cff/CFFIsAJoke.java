@@ -49,8 +49,9 @@ public class CFFIsAJoke {
         try {
             twit.tweet(new CFFApiUtils(config).getInformationFromAPI().getFormattedMessage());
             LOGGER.info("The Tweet has been posted");
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
 
         LOGGER.info("Processing time : {} s", (System.currentTimeMillis() - start) / 1000);
