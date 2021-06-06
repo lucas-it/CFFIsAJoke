@@ -8,7 +8,7 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestConfig {
+public class ConfigTest {
     private final File configFileOK = new File(getClass().getResource("/configValid.json").getPath());
     private final File configFileBadFormat = new File(getClass().getResource("/configBadFormat.json").getPath());
     private final File configFileMissingParameters = new File(getClass().getResource("/configMissingParameters.json").getPath());

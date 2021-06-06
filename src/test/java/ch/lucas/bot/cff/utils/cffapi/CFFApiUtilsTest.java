@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestCFFApiUtils {
+public class CFFApiUtilsTest {
     private CFFApiUtils cffApiUtils = new CFFApiUtils(null);
 
     @Test
