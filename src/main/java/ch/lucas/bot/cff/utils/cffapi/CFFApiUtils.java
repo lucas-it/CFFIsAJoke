@@ -138,12 +138,13 @@ public class CFFApiUtils {
             }
         }
 
-        /* Group every trains stop by lineId (int) */
+        // Group every trains stop by lineId (int)
         Map<Integer, List<TrainLate>> delayedTrainsPerLineId = delayedTrains.parallelStream().collect(Collectors.groupingBy(TrainLate::getLineId));
 
-        /* Calculate the cumulated delay */
+        // Calculate the cumulated delay
         cumulativeLate = delayedTrainsPerLineId.entrySet().parallelStream()
-                .map(e -> Collections.max(delayedTrains, Comparator.comparing(TrainLate::getArrivedProgrammedDate)))
+                // Get the late when the train reach the terminus -> take the highest date
+                .map(e -> Collections.max(e.getValue(), Comparator.comparing(TrainLate::getArrivedProgrammedDate)))
                 .mapToLong(delayedTrain -> delayedTrain.getArrivedDate().getTime() - delayedTrain.getArrivedProgrammedDate().getTime()).sum();
 
         numberOfDelayedTravels = delayedTrainsPerLineId.size();
