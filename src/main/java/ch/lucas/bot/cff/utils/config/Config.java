@@ -15,7 +15,7 @@ import java.io.*;
  */
 public class Config {
     private final Logger LOGGER = LoggerFactory.getLogger(Config.class);
-    private File jsonConfigFile;
+    private final File jsonConfigFile;
     private String sbbApiKey;
     private String twitterConsumerKey;
     private String twitterConsumerSecret;
@@ -49,9 +49,9 @@ public class Config {
                 }
             } else {
                 configIsValid = false;
-                LOGGER.error("The config file is not correctly formatted.");
+                LOGGER.error("The config file must be a json object.");
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             configIsValid = false;
             LOGGER.error(e.getMessage(), e);
         }
