@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - release/1.4.6
 
 jobs:
   test:
