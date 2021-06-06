@@ -1,15 +1,18 @@
 package ch.lucas.bot.cff.utils.config;
 
+import com.google.gson.JsonSyntaxException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-public class TestConfig {
+import static org.junit.jupiter.api.Assertions.*;
 
-    private final File configFileOK = new File(getClass().getResource("/config-ok.json").getPath());
-    private final File configFileBadFormat = new File(getClass().getResource("/config-bad-format.json").getPath());
-    private final File configFileMissingParameters = new File(getClass().getResource("/config-missing-parameters.json").getPath());
+public class TestConfig {
+    private final File configFileOK = new File(getClass().getResource("/configValid.json").getPath());
+    private final File configFileBadFormat = new File(getClass().getResource("/configBadFormat.json").getPath());
+    private final File configFileMissingParameters = new File(getClass().getResource("/configMissingParameters.json").getPath());
+    private final File configFileJsonArray = new File(getClass().getResource("/configJsonArray.json").getPath());
 
     @Test
     public void testConfigOK() {
@@ -26,23 +29,29 @@ public class TestConfig {
 
     @Test
     public void testConfigBadFormat() {
-        try {
-            Config config = new Config(configFileBadFormat);
-            if(!config.isConfigValid()) Assertions.assertTrue(true);
-            Assertions.fail();
-        } catch(Exception e) {
-            Assertions.assertTrue(true);
-        }
+        Config underTest = new Config(configFileBadFormat);
+
+        assertFalse(underTest.isConfigValid());
     }
 
     @Test
     public void testConfigMissingParameters() {
-        try {
-            Config config = new Config(configFileMissingParameters);
-            if(!config.isConfigValid()) Assertions.assertTrue(true);
-            Assertions.fail();
-        } catch(Exception e) {
-            Assertions.assertTrue(true);
-        }
+        Config underTest = new Config(configFileMissingParameters);
+
+        assertFalse(underTest.isConfigValid());
+    }
+
+    @Test
+    public void testConfigJsonArray() {
+        Config underTest = new Config(configFileJsonArray);
+
+        assertFalse(underTest.isConfigValid());
+    }
+
+    @Test
+    public void testConfigIsValid() {
+        Config underTest = new Config(configFileOK);
+
+        assertTrue(underTest.isConfigValid());
     }
 }
