@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestTrainLate {
+public class TrainLateTest {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private String recordId = "f9ab33f3d7a39af32e1a1590e3094ab85665f2d5";
     private String stopName = "Basel Bad Bf";
@@ -16,7 +16,7 @@ public class TestTrainLate {
     private Date arrivedprogrammedDate = simpleDateFormat.parse("2020-09-10T09:35:00");
     private TrainLate trainLate = new TrainLate(recordId, stopName, lineId, arrivedDate, arrivedprogrammedDate);
 
-    public TestTrainLate() throws ParseException {}
+    public TrainLateTest() throws ParseException {}
 
     @Test
     public void testRowLateRecordId() {

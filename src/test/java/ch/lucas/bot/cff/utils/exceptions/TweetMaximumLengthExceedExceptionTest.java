@@ -3,7 +3,7 @@ package ch.lucas.bot.cff.utils.exceptions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestTweetMaximumLengthExceedException {
+public class TweetMaximumLengthExceedExceptionTest {
     @Test
     public void testEmptyConstructor() {
         TweetMaximumLengthExceedException e = new TweetMaximumLengthExceedException();

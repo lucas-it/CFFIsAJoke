@@ -3,7 +3,7 @@ package ch.lucas.bot.cff.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestTimeFormatter {
+public class TimeFormatterTest {
     // Test minutes
     @Test
     public void testConvertSecondsToTimeWith1Min() {

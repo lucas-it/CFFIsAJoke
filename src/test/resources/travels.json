@@ -1,0 +1,931 @@
+[
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "347d10a7ae28c7d592e1a4e7ee81098910ae0795",
+    "fields": {
+      "fahrt_bezeichner": "85:11:3:007",
+      "bpuic": 8500010,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 3,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "IC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500010",
+      "abfahrtszeit": "2021-06-05T08:06:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.5474120551,
+        7.58956279016
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T08:06:54",
+      "haltestellen_name": "Basel SBB",
+      "linien_text": "IC3"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.58956279016,
+        47.5474120551
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "d4fd7085edfb50df7bd560d52a288068196b4ce1",
+    "fields": {
+      "fahrt_bezeichner": "85:11:3:007",
+      "bpuic": 8509002,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 3,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "IC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8509002",
+      "abfahrtszeit": "2021-06-05T10:13:00",
+      "ankunftszeit": "2021-06-05T10:12:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.9674404284,
+        9.55404469208
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T10:14:57",
+      "haltestellen_name": "Landquart",
+      "linien_text": "IC3",
+      "an_prognose": "2021-06-05T10:12:41"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        9.55404469208,
+        46.9674404284
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "cecb7f8120d9bdb0a467c61a40c66bba95c71808",
+    "fields": {
+      "fahrt_bezeichner": "85:11:3:007",
+      "bpuic": 8509411,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 3,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "IC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8509411",
+      "abfahrtszeit": "2021-06-05T10:04:00",
+      "ankunftszeit": "2021-06-05T10:03:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.0448235144,
+        9.44626047466
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T10:05:02",
+      "haltestellen_name": "Sargans",
+      "linien_text": "IC3",
+      "an_prognose": "2021-06-05T10:03:22"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        9.44626047466,
+        47.0448235144
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "76535d558395d441a828170e04012a7c6f89c726",
+    "fields": {
+      "fahrt_bezeichner": "85:11:3:007",
+      "bpuic": 8503000,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 3,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "IC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8503000",
+      "abfahrtszeit": "2021-06-05T09:07:00",
+      "ankunftszeit": "2021-06-05T09:00:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.3781766742,
+        8.5402123491
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T09:09:02",
+      "haltestellen_name": "Z\u00fcrich HB",
+      "linien_text": "IC3",
+      "an_prognose": "2021-06-05T09:01:09"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        8.5402123491,
+        47.3781766742
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "497c5137d5f31e01e043aa9f6d9b9cc70ead7c92",
+    "fields": {
+      "fahrt_bezeichner": "85:11:3:007",
+      "bpuic": 8509000,
+      "abfahrtsverspatung": "false",
+      "ankunftszeit": "2021-06-05T10:23:00",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 3,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "IC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8509000",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "produkt_id": "Zug",
+      "zusatzfahrt_tf": "false",
+      "geopos": [
+        46.8530841628,
+        9.52893773304
+      ],
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "haltestellen_name": "Chur",
+      "linien_text": "IC3",
+      "an_prognose": "2021-06-05T10:22:55"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        9.52893773304,
+        46.8530841628
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "f41064996330241cae2a0bac0b72c8d0703d2b4b",
+    "fields": {
+      "fahrt_bezeichner": "85:11:4:001",
+      "bpuic": 8500090,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 4,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "ICE",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500090",
+      "abfahrtszeit": "2021-06-05T20:22:00",
+      "ankunftszeit": "2021-06-05T20:19:00",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.5673079057,
+        7.60692041847
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T20:22:00",
+      "haltestellen_name": "Basel Bad Bf",
+      "linien_text": "ICE",
+      "an_prognose": "2021-06-05T20:20:00"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.60692041847,
+        47.5673079057
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "32eab0840c588adc076f5fe7f5611e9655b2a66f",
+    "fields": {
+      "fahrt_bezeichner": "85:11:4:001",
+      "bpuic": 8500010,
+      "abfahrtsverspatung": "false",
+      "ankunftszeit": "2021-06-05T19:53:00",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 4,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "ICE",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500010",
+      "abfahrtszeit": "2021-06-05T20:13:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "produkt_id": "Zug",
+      "zusatzfahrt_tf": "false",
+      "geopos": [
+        47.5474120551,
+        7.58956279016
+      ],
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T20:13:42",
+      "haltestellen_name": "Basel SBB",
+      "linien_text": "ICE"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.58956279016,
+        47.5474120551
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "e0f535e33223435ce0f5b83ff27bc7d35c965b0b",
+    "fields": {
+      "fahrt_bezeichner": "85:11:4:001",
+      "bpuic": 8503000,
+      "abfahrtsverspatung": "false",
+      "verkehrsmittel_text": "ICE",
+      "abfahrtszeit": "2021-06-05T18:59:00",
+      "lod": "http://lod.opentransportdata.swiss/didok/8503000",
+      "haltestellen_name": "Z\u00fcrich HB",
+      "geopos": [
+        47.3781766742,
+        8.5402123491
+      ],
+      "betreiber_id": "85:11",
+      "produkt_id": "Zug",
+      "ab_prognose_status": "UNBEKANNT",
+      "linien_id": 4,
+      "betreiber_abk": "SBB",
+      "zusatzfahrt_tf": "false",
+      "linien_text": "ICE",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "faellt_aus_tf": "true",
+      "an_prognose_status": "UNBEKANNT",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "betriebstag": "2021-06-05"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        8.5402123491,
+        47.3781766742
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "19fb959aa5825488752151b3e979c3f5c33aae1f",
+    "fields": {
+      "fahrt_bezeichner": "85:11:5:001",
+      "bpuic": 8500090,
+      "abfahrtsverspatung": "true",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 5,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "ICE",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500090",
+      "abfahrtszeit": "2021-06-05T09:40:00",
+      "ankunftszeit": "2021-06-05T09:35:00",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.5673079057,
+        7.60692041847
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "true",
+      "ab_prognose": "2021-06-05T10:08:00",
+      "haltestellen_name": "Basel Bad Bf",
+      "linien_text": "ICE",
+      "an_prognose": "2021-06-05T10:05:00"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.60692041847,
+        47.5673079057
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "403c2805f653120832842ab2178d5854b949d244",
+    "fields": {
+      "fahrt_bezeichner": "85:11:5:001",
+      "bpuic": 8500010,
+      "abfahrtsverspatung": "false",
+      "ankunftszeit": "2021-06-05T09:47:00",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 5,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "ICE",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500010",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "produkt_id": "Zug",
+      "zusatzfahrt_tf": "false",
+      "geopos": [
+        47.5474120551,
+        7.58956279016
+      ],
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "true",
+      "haltestellen_name": "Basel SBB",
+      "linien_text": "ICE",
+      "an_prognose": "2021-06-05T10:16:47"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.58956279016,
+        47.5474120551
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "9a9a4e4b892dca5d5571dd4007ffaebd5f86ddc1",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8507493,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 1,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507493",
+      "abfahrtszeit": "2021-06-05T12:05:00",
+      "ankunftszeit": "2021-06-05T12:04:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.6826279804,
+        7.8514531376
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T12:06:06",
+      "haltestellen_name": "Interlaken West",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T12:04:56"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.8514531376,
+        46.6826279804
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "93f17927172cd885a093515ca5e03eb610cc0428",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8507483,
+      "abfahrtsverspatung": "true",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 1,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507483",
+      "abfahrtszeit": "2021-06-05T12:22:00",
+      "ankunftszeit": "2021-06-05T12:22:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.6863956683,
+        7.6801030578
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T12:25:09",
+      "haltestellen_name": "Spiez",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T12:24:12"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.6801030578,
+        46.6863956683
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "25bf86f5fd9a87c5eb4fe3f0de8f9af11534342e",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8500010,
+      "abfahrtsverspatung": "true",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500010",
+      "abfahrtszeit": "2021-06-05T14:27:00",
+      "ankunftszeit": "2021-06-05T14:01:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.5474120551,
+        7.58956279016
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T14:30:15",
+      "haltestellen_name": "Basel SBB",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T14:02:12"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.58956279016,
+        47.5474120551
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "5d388d5d2369fcc6c75eef27180de2ebc99e4d4d",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8500090,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500090",
+      "abfahrtszeit": "2021-06-05T14:35:00",
+      "ankunftszeit": "2021-06-05T14:33:00",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.5673079057,
+        7.60692041847
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T14:37:00",
+      "haltestellen_name": "Basel Bad Bf",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T14:36:00"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.60692041847,
+        47.5673079057
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "99df5c36bc2f25952af1709e51a18ee5a9482ad3",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8507492,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507492",
+      "abfahrtszeit": "2021-06-05T12:00:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.6904999962,
+        7.86900000435
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T12:00:59",
+      "haltestellen_name": "Interlaken Ost",
+      "linien_text": "EC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.86900000435,
+        46.6904999962
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "3359e094518a06c7ef6362439eb9666cbb0e7e1f",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8500023,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500023",
+      "abfahrtszeit": "2021-06-05T13:50:00",
+      "ankunftszeit": "2021-06-05T13:49:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.4844611721,
+        7.7313674807
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T13:52:41",
+      "haltestellen_name": "Liestal",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T13:50:55"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.7313674807,
+        47.4844611721
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "ea1c14786cdd84f8bf67352c59453d5df98fcbc6",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8507100,
+      "abfahrtsverspatung": "true",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507100",
+      "abfahrtszeit": "2021-06-05T12:33:00",
+      "ankunftszeit": "2021-06-05T12:32:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.7548527306,
+        7.62960582867
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T12:37:01",
+      "haltestellen_name": "Thun",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T12:34:18"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.62960582867,
+        46.7548527306
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "b87609b6648993f81dafc0980c8d98a16c578f35",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8507000,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507000",
+      "abfahrtszeit": "2021-06-05T13:04:00",
+      "ankunftszeit": "2021-06-05T12:52:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.9488322905,
+        7.43913088992
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T13:05:12",
+      "haltestellen_name": "Bern",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T12:54:58"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.43913088992,
+        46.9488322905
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "8317ec59c4c91cb0b7068bb76679dc17d32df9b3",
+    "fields": {
+      "fahrt_bezeichner": "85:11:6:002",
+      "bpuic": 8500218,
+      "abfahrtsverspatung": "true",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 6,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500218",
+      "abfahrtszeit": "2021-06-05T13:33:00",
+      "ankunftszeit": "2021-06-05T13:30:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.3519347593,
+        7.90769964791
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "true",
+      "ab_prognose": "2021-06-05T13:36:13",
+      "haltestellen_name": "Olten",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T13:33:27"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.90769964791,
+        47.3519347593
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "80df917866f8e80ebb7899b53ea3165445583f4f",
+    "fields": {
+      "fahrt_bezeichner": "85:11:7:001",
+      "bpuic": 8507492,
+      "abfahrtsverspatung": "false",
+      "ankunftszeit": "2021-06-05T15:58:00",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 7,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507492",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "produkt_id": "Zug",
+      "zusatzfahrt_tf": "false",
+      "geopos": [
+        46.6904999962,
+        7.86900000435
+      ],
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "haltestellen_name": "Interlaken Ost",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T15:57:42"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.86900000435,
+        46.6904999962
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "95190c434ebdd0fdf763a2e2e692989e33e2fc6d",
+    "fields": {
+      "fahrt_bezeichner": "85:11:7:001",
+      "bpuic": 8507493,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 7,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8507493",
+      "abfahrtszeit": "2021-06-05T15:53:00",
+      "ankunftszeit": "2021-06-05T15:51:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        46.6826279804,
+        7.8514531376
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T15:53:58",
+      "haltestellen_name": "Interlaken West",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T15:50:30"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.8514531376,
+        46.6826279804
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "5dd8449b0dbe26fed31d7087924a233c477fd504",
+    "fields": {
+      "fahrt_bezeichner": "85:11:7:001",
+      "bpuic": 8500023,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 7,
+      "an_prognose_status": "REAL",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500023",
+      "abfahrtszeit": "2021-06-05T14:08:00",
+      "ankunftszeit": "2021-06-05T14:07:00",
+      "ab_prognose_status": "REAL",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.4844611721,
+        7.7313674807
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T14:08:45",
+      "haltestellen_name": "Liestal",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T14:07:26"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.7313674807,
+        47.4844611721
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  },
+  {
+    "datasetid": "ist-daten-sbb",
+    "recordid": "67bae6928e4e3e7fc3d2456cd67473e28d031475",
+    "fields": {
+      "fahrt_bezeichner": "85:11:7:001",
+      "bpuic": 8500090,
+      "abfahrtsverspatung": "false",
+      "produkt_id": "Zug",
+      "betreiber_id": "85:11",
+      "betriebstag": "2021-06-05",
+      "linien_id": 7,
+      "an_prognose_status": "PROGNOSE",
+      "verkehrsmittel_text": "EC",
+      "lod": "http://lod.opentransportdata.swiss/didok/8500090",
+      "abfahrtszeit": "2021-06-05T13:26:00",
+      "ankunftszeit": "2021-06-05T13:24:00",
+      "ab_prognose_status": "PROGNOSE",
+      "betreiber_abk": "SBB",
+      "faellt_aus_tf": "false",
+      "betreiber_name": "Schweizerische Bundesbahnen SBB",
+      "geopos": [
+        47.5673079057,
+        7.60692041847
+      ],
+      "zusatzfahrt_tf": "false",
+      "durchfahrt_tf": "false",
+      "ankunftsverspatung": "false",
+      "ab_prognose": "2021-06-05T13:26:00",
+      "haltestellen_name": "Basel Bad Bf",
+      "linien_text": "EC",
+      "an_prognose": "2021-06-05T13:24:00"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        7.60692041847,
+        47.5673079057
+      ]
+    },
+    "record_timestamp": "2021-06-06T10:01:08.240000+00:00"
+  }
+]
