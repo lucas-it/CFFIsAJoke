@@ -1,5 +1,6 @@
 # CFFIsAJoke
 ![Deploy master branch](https://github.com/lucas-it/CFFIsAJoke/workflows/Deploy%20master%20branch/badge.svg?branch=master)
+![Sonar quality gate](https://sonarcloud.io/api/project_badges/measure?project=lucas-it_CFFIsAJoke&metric=alert_status)
 
 A bot that daily post informations about SBB/CFF/FFS disruptions.
 The bot is talking on [@cffisajoke](https://twitter.com/cffisajoke)
