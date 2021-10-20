@@ -13,7 +13,8 @@ public class MessageTest {
     private final double percentageOfDelayedTravels = 10.0;
     private final double percentageOfDeletedTravels = 5.0;
     private final String cumulatedDelay = "13 jours, 21 minutes";
-    private final Message underTest = new Message(dateOfReport, nbrOfTravels, nbrOfDelayedTravels, nbrOfDeletedTravels, percentageOfDelayedTravels, percentageOfDeletedTravels, cumulatedDelay);
+    private final int averageDelayPerTrain = 4;
+    private final Message underTest = new Message(dateOfReport, nbrOfTravels, nbrOfDelayedTravels, nbrOfDeletedTravels, percentageOfDelayedTravels, percentageOfDeletedTravels, cumulatedDelay, 4);
 
     @Test
     public void testGetDateOfReport() {
@@ -51,6 +52,11 @@ public class MessageTest {
     }
 
     @Test
+    public void testGetAverageDelayPerTrain() {
+        assertEquals(averageDelayPerTrain, underTest.getAverageDelayPerTrain());
+    }
+
+    @Test
     public void testGetFormattedMessage() {
         String underTest = this.underTest.getFormattedMessage();
 
@@ -59,6 +65,7 @@ public class MessageTest {
         assertTrue(underTest.contains(nbrOfDeletedTravels + ""));
         assertTrue(underTest.contains(percentageOfDelayedTravels + ""));
         assertTrue(underTest.contains(percentageOfDeletedTravels + ""));
+        assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(averageDelayPerTrain)));
         assertTrue(underTest.contains(cumulatedDelay));
     }
 }

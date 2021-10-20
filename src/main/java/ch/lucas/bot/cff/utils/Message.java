@@ -14,6 +14,7 @@ public class Message {
     private final int nbrOfDeletedTravels;
     private final double percentageOfDelayedTravels;
     private final double percentageOfDeletedTravels;
+    private final int averageDelayPerTrain;
     private final DecimalFormat decimalFormatter = new DecimalFormat("#,###");
 
     /**
@@ -23,9 +24,10 @@ public class Message {
      * @param nbrOfDelayedTravels The number of delayed travels.
      * @param percentageOfDelayedTravels The pourcentage of delayed travels.
      * @param cumulatedDelay The total delayed time. For exemple: 2 hours, 1 minute.
+     * @param averageDelayPerTrain The average delay per train in seconds.
      */
     public Message(String dateOfReport, int nbrOfTravels, int nbrOfDelayedTravels, int nbrOfDeletedTravels,
-                   double percentageOfDelayedTravels, double percentageOfDeletedTravels, String cumulatedDelay) {
+                   double percentageOfDelayedTravels, double percentageOfDeletedTravels, String cumulatedDelay, int averageDelayPerTrain) {
         this.dateOfReport = dateOfReport;
         this.cumulatedDelay = cumulatedDelay;
         this.nbrOfTravels = nbrOfTravels;
@@ -33,6 +35,7 @@ public class Message {
         this.nbrOfDeletedTravels = nbrOfDeletedTravels;
         this.percentageOfDelayedTravels = percentageOfDelayedTravels;
         this.percentageOfDeletedTravels = percentageOfDeletedTravels;
+        this.averageDelayPerTrain = averageDelayPerTrain;
     }
 
     /**
@@ -92,6 +95,14 @@ public class Message {
     }
 
     /**
+     * Get the average delay per train
+     * @return the average delay per train in seconds.
+     */
+    public int getAverageDelayPerTrain() {
+        return averageDelayPerTrain;
+    }
+
+    /**
      * Get the message ready to be tweeted.
      * @return the formatted message
      */
@@ -101,6 +112,7 @@ public class Message {
                 result += "\uD83D\uDE86 Nombre de voyages: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
                 result += "⏰ Trains en retard: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + (double) Math.round(getPercentageOfDelayedTravels() * 100) / 100 + " %)" + "\n";
                 result += "\uD83D\uDDD1️ Trains supprimés: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + (double) Math.round(getPercentageOfDeletedTravels() * 100) / 100 + " %)" + "\n";
+                result += "\uD83D\uDE89 Retard par train: " + TimeFormatter.convertSecondsToTime(getAverageDelayPerTrain()) + "\n";
                 result += "⏱ Retard cumulé: " + getCumulatedDelay() + "\n";
 
         return result;

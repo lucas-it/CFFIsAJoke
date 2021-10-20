@@ -8,16 +8,19 @@ package ch.lucas.bot.cff.utils.cffapi;
 public class DisruptionStats {
     private int numberOfDelayedTravels;
     private long cumulativeLate;
+    private int averageDelayPerTrain;
 
     /**
      * Create a new DisruptionStats with number of delayed travels and the total of delays.
      *
      * @param numberOfDelayedTravels the number of delayed travels
-     * @param cumulativeLate the total of delays
+     * @param cumulativeLate the total of delays in milliseconds
+     * @param averageDelayPerTrain the average delay per train in milliseconds
      */
-    public DisruptionStats(int numberOfDelayedTravels, long cumulativeLate) {
+    public DisruptionStats(int numberOfDelayedTravels, long cumulativeLate, int averageDelayPerTrain) {
         this.numberOfDelayedTravels = numberOfDelayedTravels;
         this.cumulativeLate = cumulativeLate;
+        this.averageDelayPerTrain = averageDelayPerTrain;
     }
 
     /**
@@ -38,7 +41,7 @@ public class DisruptionStats {
 
     /**
      * Get the total delays of travels.
-     * @return the total delays
+     * @return the total delays in milliseconds
      */
     public long getCumulativeLate() {
         return cumulativeLate;
@@ -46,9 +49,25 @@ public class DisruptionStats {
 
     /**
      * Set the total delays of travels.
-     * @param cumulativeLate total delays of travels
+     * @param cumulativeLate total delays of travels in milliseconds
      */
     public void setCumulativeLate(long cumulativeLate) {
         this.cumulativeLate = cumulativeLate;
+    }
+
+    /**
+     * Get the average delay per train
+     * @return average delay per train in milliseconds
+     */
+    public int getAverageDelayPerTrain() {
+        return averageDelayPerTrain;
+    }
+
+    /**
+     * Set the average delay per train.
+     * @param averageDelayPerTrain average delay per train in milliseconds
+     */
+    public void setAverageDelayPerTrain(int averageDelayPerTrain) {
+        this.averageDelayPerTrain = averageDelayPerTrain;
     }
 }
