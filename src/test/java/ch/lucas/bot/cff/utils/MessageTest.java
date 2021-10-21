@@ -71,4 +71,17 @@ public class MessageTest {
         assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(averageDelayPerTrain, Locale.FRENCH)));
         assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(cumulatedDelay, Locale.FRENCH)));
     }
+
+    @Test
+    public void testGetFormattedMessageGerman() {
+        String underTest = this.underTest.getFormattedMessage(Locale.GERMAN);
+
+        assertTrue(underTest.contains(nbrOfTravels + ""));
+        assertTrue(underTest.contains(nbrOfDelayedTravels + ""));
+        assertTrue(underTest.contains(nbrOfDeletedTravels + ""));
+        assertTrue(underTest.contains(percentageOfDelayedTravels + ""));
+        assertTrue(underTest.contains(percentageOfDeletedTravels + ""));
+        assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(averageDelayPerTrain, Locale.GERMAN)));
+        assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(cumulatedDelay, Locale.GERMAN)));
+    }
 }
