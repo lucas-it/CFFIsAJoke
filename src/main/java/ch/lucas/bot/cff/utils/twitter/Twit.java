@@ -4,11 +4,10 @@ import ch.lucas.bot.cff.utils.config.Config;
 import ch.lucas.bot.cff.utils.exceptions.TweetMaximumLengthExceedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
+import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
+
+import java.util.Arrays;
 
 /**
  * This class contains utility methods for posting tweet.
@@ -39,6 +38,7 @@ public class Twit {
 
     /**
      * Post a new tweet.
+     *
      * @param message the content of the tweet
      * @return the twitter status
      * @throws TweetMaximumLengthExceedException if the tweet is longer than 280 characters.
@@ -50,7 +50,7 @@ public class Twit {
         }
 
         LOGGER.info("tweet - Check if the bot is allowed to post tweet (config.json)");
-        if(config.isAllowTweeting()) {
+        if (config.isAllowTweeting()) {
             try {
                 LOGGER.info("tweet - Post the Tweet (update status)");
                 return twitter.updateStatus(message);
@@ -66,7 +66,50 @@ public class Twit {
     }
 
     /**
+     * Post a new tweet.
+     *
+     * @param parentMessage the tweet which contain the thread
+     * @param messages      the messages of the thread
+     * @throws TweetMaximumLengthExceedException if the tweet is longer than 280 characters.
+     */
+    public void tweet(String parentMessage, String... messages) throws TweetMaximumLengthExceedException {
+        LOGGER.info("tweet - Check if the message is not too long");
+        if (parentMessage.length() > 280 || Arrays.stream(messages).anyMatch(m -> m.length() > 280)) {
+            throw new TweetMaximumLengthExceedException();
+        }
+
+        LOGGER.info("tweet - Check if the bot is allowed to post tweet (config.json)");
+        if (config.isAllowTweeting()) {
+            long parentStatusId;
+
+            try {
+                LOGGER.info("tweet - Post the Tweet (update status)");
+                parentStatusId = twitter.updateStatus(parentMessage).getId();
+            } catch (TwitterException e) {
+                LOGGER.error(e.getMessage(), e);
+                return;
+            }
+
+            Arrays.stream(messages).forEach(m -> {
+                StatusUpdate su = new StatusUpdate(m);
+                su.setInReplyToStatusId(parentStatusId);
+
+                try {
+                    LOGGER.info("tweet - Post the a new message under the Thread (update status)");
+                    twitter.updateStatus(su);
+                } catch (TwitterException e) {
+                    LOGGER.error(e.getMessage(), e);
+                }
+            });
+        } else {
+            LOGGER.info("tweet - The bot is not allowed to post tweet (change config.json). The tweet is below :");
+            LOGGER.info("\n{} \n {}", parentMessage, String.join("\n", messages));
+        }
+    }
+
+    /**
      * Get the twitter object.
+     *
      * @return the twitter object
      */
     public Twitter getTwitter() {
