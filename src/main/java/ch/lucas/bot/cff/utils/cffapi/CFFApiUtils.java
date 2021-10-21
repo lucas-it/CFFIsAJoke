@@ -28,9 +28,9 @@ import java.util.stream.StreamSupport;
  * @author Lucas-it@github
  */
 public class CFFApiUtils {
-    private final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-    private Config config;
+    private static final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private final Config config;
     private DisruptionStats disruptionStats;
     private int deletedTravels;
     private int totalTravels;

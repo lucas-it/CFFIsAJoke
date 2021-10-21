@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Message {
-    private final Logger LOGGER = LoggerFactory.getLogger(Message.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Message.class);
     private final Date dateOfReport;
     private final int nbrOfTravels;
     private final int nbrOfDelayedTravels;
@@ -23,11 +23,12 @@ public class Message {
 
     /**
      * Create a new message with information about disruptions.
-     * @param dateOfReport The date of the report.
-     * @param nbrOfTravels The number of travels.
-     * @param nbrOfDelayedTravels The number of delayed travels.
+     *
+     * @param dateOfReport         The date of the report.
+     * @param nbrOfTravels         The number of travels.
+     * @param nbrOfDelayedTravels  The number of delayed travels.
      * @param averageDelayPerTrain The average delay per train in seconds.
-     * @param cumulatedDelay The total delayed time in seconds.
+     * @param cumulatedDelay       The total delayed time in seconds.
      */
     public Message(Date dateOfReport, int nbrOfTravels, int nbrOfDelayedTravels, int nbrOfDeletedTravels, long averageDelayPerTrain, long cumulatedDelay) {
         this.dateOfReport = dateOfReport;
@@ -42,6 +43,7 @@ public class Message {
 
     /**
      * Get the date of the report.
+     *
      * @return the date of report
      */
     public Date getDateOfReport() {
@@ -50,6 +52,7 @@ public class Message {
 
     /**
      * Get the cumulated delay.
+     *
      * @return the cumulated delay
      */
     public long getCumulatedDelay() {
@@ -58,6 +61,7 @@ public class Message {
 
     /**
      * Get the number of travels.
+     *
      * @return the number of travels
      */
     public int getNbrOfTravels() {
@@ -66,6 +70,7 @@ public class Message {
 
     /**
      * Get the number of delayed travels.
+     *
      * @return the number of delayed travels
      */
     public int getNbrOfDelayedTravels() {
@@ -74,6 +79,7 @@ public class Message {
 
     /**
      * Get the number of deleted travels.
+     *
      * @return the number of deleted travels.
      */
     public int getNbrOfDeletedTravels() {
@@ -82,6 +88,7 @@ public class Message {
 
     /**
      * Get the pourcentage of delay.
+     *
      * @return the pourcentage of delay
      */
     public double getPercentageOfDelayedTravels() {
@@ -90,6 +97,7 @@ public class Message {
 
     /**
      * Get the pourcentage of deleted travels.
+     *
      * @return the pourcentage of deleted travels.
      */
     public double getPercentageOfDeletedTravels() {
@@ -98,6 +106,7 @@ public class Message {
 
     /**
      * Get the average delay per train
+     *
      * @return the average delay per train in seconds.
      */
     public long getAverageDelayPerTrain() {
@@ -106,6 +115,7 @@ public class Message {
 
     /**
      * Get the message ready to be tweeted.
+     *
      * @return the formatted message
      */
     public String getFormattedMessage(Locale locale) {
@@ -116,7 +126,7 @@ public class Message {
         String cumulatedDelayFormatted = TimeFormatter.convertSecondsToTime(getCumulatedDelay(), locale);
         DateFormat dateFormatter;
 
-        if(locale == Locale.FRENCH) {
+        if (locale == Locale.FRENCH) {
             dateFormatter = new SimpleDateFormat("EEEE d MMMM yyyy", locale);
             result = "Retards #CFF #SBB #FFS du " + dateFormatter.format(getDateOfReport()) + "\n\n";
             result += "\uD83D\uDE86 Nombre de voyages: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
@@ -124,7 +134,7 @@ public class Message {
             result += "\uD83D\uDDD1️ Trains supprimés: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + getPercentageOfDeletedTravels() + " %)" + "\n";
             result += "\uD83D\uDE89 Retard moyen par train: " + averageDelayPerTrainFormatted + "\n";
             result += "⏱ Retard cumulé: " + cumulatedDelayFormatted + "\n";
-        } else if(locale == Locale.GERMAN) {
+        } else if (locale == Locale.GERMAN) {
             dateFormatter = new SimpleDateFormat("EEEE d'.' MMMM yyyy", locale);
             result = "Verzögerungen #CFF #SBB #FFS ab " + dateFormatter.format(getDateOfReport()) + "\n\n";
             result += "\uD83D\uDE86 Anzahl der Fahrten: " + decimalFormatter.format(getNbrOfTravels()) + "\n";

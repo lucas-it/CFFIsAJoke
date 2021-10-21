@@ -15,7 +15,7 @@ import java.util.Arrays;
  * @author Lucas-it@github
  */
 public class Twit {
-    private final Logger LOGGER = LoggerFactory.getLogger(Twit.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Twit.class);
     private final Config config;
     private final Twitter twitter;
 

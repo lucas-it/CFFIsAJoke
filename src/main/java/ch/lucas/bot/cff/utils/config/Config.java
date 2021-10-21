@@ -6,7 +6,8 @@ import com.google.gson.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
 
 /**
  * This class provides some utility methods to read the json config file.
@@ -14,7 +15,7 @@ import java.io.*;
  * @author Lucas-it@github
  */
 public class Config {
-    private final Logger LOGGER = LoggerFactory.getLogger(Config.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
     private final File jsonConfigFile;
     private String sbbApiKey;
     private String twitterConsumerKey;
@@ -26,6 +27,7 @@ public class Config {
 
     /**
      * Create a new ConfigUtils object.
+     *
      * @param jsonConfigFile the path of the json config file
      */
     public Config(File jsonConfigFile) {
@@ -33,9 +35,9 @@ public class Config {
 
         try {
             JsonElement jsonParser = JsonParser.parseReader(new FileReader(jsonConfigFile));
-            if(jsonParser.isJsonObject()) {
+            if (jsonParser.isJsonObject()) {
                 JsonObject jsonConfig = jsonParser.getAsJsonObject();
-                if(jsonConfig.has("sbbApiKey") && jsonConfig.has("twitterConsumerKey") && jsonConfig.has("twitterConsumerSecret") && jsonConfig.has("twitterAccessToken") && jsonConfig.has("twitterAccessTokenSecret") && jsonConfig.has("allowTweeting")) {
+                if (jsonConfig.has("sbbApiKey") && jsonConfig.has("twitterConsumerKey") && jsonConfig.has("twitterConsumerSecret") && jsonConfig.has("twitterAccessToken") && jsonConfig.has("twitterAccessTokenSecret") && jsonConfig.has("allowTweeting")) {
                     sbbApiKey = jsonConfig.get("sbbApiKey").getAsString();
                     twitterConsumerKey = jsonConfig.get("twitterConsumerKey").getAsString();
                     twitterConsumerSecret = jsonConfig.get("twitterConsumerSecret").getAsString();
@@ -59,45 +61,66 @@ public class Config {
 
     /**
      * Get the SBB API key.
+     *
      * @return the ssb api key
      */
-    public String getSBBApiKey() { return sbbApiKey; }
+    public String getSBBApiKey() {
+        return sbbApiKey;
+    }
 
     /**
      * Get the path of the json config file.
+     *
      * @return the full path of json config file
      */
-    public File getJsonConfigFile() { return jsonConfigFile; }
+    public File getJsonConfigFile() {
+        return jsonConfigFile;
+    }
 
     /**
      * Get the twitter consumer key from config file.
+     *
      * @return the twitter consumer key
      */
-    public String getTwitterConsumerKey() { return twitterConsumerKey; }
+    public String getTwitterConsumerKey() {
+        return twitterConsumerKey;
+    }
 
     /**
      * Get the twitter consumer secret from config file.
+     *
      * @return the twitter consumer secret
      */
-    public String getTwitterConsumerSecret() { return twitterConsumerSecret; }
+    public String getTwitterConsumerSecret() {
+        return twitterConsumerSecret;
+    }
 
     /**
      * Get the twitter access token from config file.
+     *
      * @return the twitter access token
      */
-    public String getTwitterAccessToken() { return twitterAccessToken; }
+    public String getTwitterAccessToken() {
+        return twitterAccessToken;
+    }
 
     /**
      * Get the twitter access token secret from config file.
+     *
      * @return the twitter access token secret
      */
-    public String getTwitterAccessTokenSecret() { return twitterAccessTokenSecret; }
+    public String getTwitterAccessTokenSecret() {
+        return twitterAccessTokenSecret;
+    }
 
     /**
      * Get if the bot is allowed to tweet from config file.
+     *
      * @return is allowed to tweet
      */
-    public boolean isAllowTweeting() { return allowTweeting; }
+    public boolean isAllowTweeting() {
+        return allowTweeting;
+    }
 
     /**
      * Get if the config file is valid.
@@ -110,7 +133,10 @@ public class Config {
      *     <li>twitterAccessTokenSecret</li>
      *     <li>allowTweeting</li>
      * </ul>
+     *
      * @return the config is valid or not
      */
-    public boolean isConfigValid() { return configIsValid; }
+    public boolean isConfigValid() {
+        return configIsValid;
+    }
 }
