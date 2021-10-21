@@ -38,6 +38,7 @@ public class Twit {
 
     /**
      * Post a new tweet.
+     *
      * @param message the content of the tweet
      * @return the twitter status
      * @throws TweetMaximumLengthExceedException if the tweet is longer than 280 characters.
@@ -49,7 +50,7 @@ public class Twit {
         }
 
         LOGGER.info("tweet - Check if the bot is allowed to post tweet (config.json)");
-        if(config.isAllowTweeting()) {
+        if (config.isAllowTweeting()) {
             try {
                 LOGGER.info("tweet - Post the Tweet (update status)");
                 return twitter.updateStatus(message);
@@ -66,18 +67,19 @@ public class Twit {
 
     /**
      * Post a new tweet.
+     *
      * @param parentMessage the tweet which contain the thread
-     * @param messages the messages of the thread
+     * @param messages      the messages of the thread
      * @throws TweetMaximumLengthExceedException if the tweet is longer than 280 characters.
      */
     public void tweet(String parentMessage, String... messages) throws TweetMaximumLengthExceedException {
         LOGGER.info("tweet - Check if the message is not too long");
-        if (parentMessage.length() > 280 || Arrays.stream(messages).anyMatch((a) -> a.length() > 280)) {
+        if (parentMessage.length() > 280 || Arrays.stream(messages).anyMatch(m -> m.length() > 280)) {
             throw new TweetMaximumLengthExceedException();
         }
 
         LOGGER.info("tweet - Check if the bot is allowed to post tweet (config.json)");
-        if(config.isAllowTweeting()) {
+        if (config.isAllowTweeting()) {
             long parentStatusId;
 
             try {
@@ -101,12 +103,13 @@ public class Twit {
             });
         } else {
             LOGGER.info("tweet - The bot is not allowed to post tweet (change config.json). The tweet is below :");
-            LOGGER.info("\n{}", parentMessage + String.join("\n\n", messages));
+            LOGGER.info("\n{} \n {}", parentMessage, String.join("\n", messages));
         }
     }
 
     /**
      * Get the twitter object.
+     *
      * @return the twitter object
      */
     public Twitter getTwitter() {
