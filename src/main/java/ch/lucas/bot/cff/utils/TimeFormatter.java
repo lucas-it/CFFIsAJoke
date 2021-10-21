@@ -1,5 +1,7 @@
 package ch.lucas.bot.cff.utils;
 
+import java.util.Locale;
+
 /**
  * Utility class for the time.
  *
@@ -18,7 +20,7 @@ public class TimeFormatter {
      * @param seconds the seconds to convert
      * @return the formatted time
      */
-    public static String convertSecondsToTime(long seconds) {
+    public static String convertSecondsToTime(long seconds, Locale locale) {
         long months = seconds / (30 * 24 * 3600);
 
         seconds = seconds % (30 * 24 * 3600);
@@ -35,22 +37,70 @@ public class TimeFormatter {
         boolean setMins = minutes != 0;
 
         if(months != 0) {
-            result.append(months + " mois");
+            result.append(months);
+            result.append(" ");
+            result.append(getMonth(locale, months > 1));
             result.append(days != 0 || hours != 0 ? ", " : "");
             setMins = false;
         }
         if(days != 0) {
-            result.append(days + (days == 1 ? " jour" : " jours"));
+            result.append(days);
+            result.append(" ");
+            result.append(getDay(locale, days > 1));
             result.append(hours != 0 || setMins ? ", " : "");
         }
         if(hours != 0) {
-            result.append(hours + (hours == 1 ? " heure" : " heures"));
+            result.append(hours);
+            result.append(" ");
+            result.append(getHour(locale, hours > 1));
             result.append(setMins ? ", " : "");
         }
         if(setMins) {
-            result.append(minutes + (minutes == 1 ? " minute" : " minutes"));
+            result.append(minutes);
+            result.append(" ");
+            result.append(getMinute(locale, minutes > 1));
         }
 
         return result.toString();
+    }
+
+    private static String getMonth(Locale locale, boolean plural) {
+        if(locale == Locale.FRENCH) {
+            return "mois";
+        } else if(locale == Locale.GERMAN) {
+            return plural ? "Monate" : "Monat";
+        }
+
+        return "";
+    }
+
+    private static String getDay(Locale locale, boolean plural) {
+        if(locale == Locale.FRENCH) {
+            return plural ? "jours" : "jour";
+        } else if(locale == Locale.GERMAN) {
+            return plural ? "Tage" : "Tag";
+        }
+
+        return "";
+    }
+
+    private static String getHour(Locale locale, boolean plural) {
+        if(locale == Locale.FRENCH) {
+            return plural ? "heures" : "heure";
+        } else if(locale == Locale.GERMAN) {
+            return plural ? "Stunden" : "Stunde";
+        }
+
+        return "";
+    }
+
+    private static String getMinute(Locale locale, boolean plural) {
+        if(locale == Locale.FRENCH) {
+            return plural ? "minutes" : "minute";
+        } else if(locale == Locale.GERMAN) {
+            return plural ? "Minuten" : "Minute";
+        }
+
+        return "";
     }
 }

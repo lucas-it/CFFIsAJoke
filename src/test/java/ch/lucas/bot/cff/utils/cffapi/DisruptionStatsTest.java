@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 
 public class DisruptionStatsTest {
     private final int nbrOfDelayedTravels = 200;
+    private final int averageDelayPerTrain = 4;
     private final long cumulativeLate = 100000L;
-    private final DisruptionStats disruptionStats = new DisruptionStats(nbrOfDelayedTravels, cumulativeLate);
+    private final DisruptionStats disruptionStats = new DisruptionStats(nbrOfDelayedTravels, averageDelayPerTrain, cumulativeLate);
 
     @Test
     public void testDisruptionStatsNbrOfDeletedTravels() {
@@ -29,5 +30,11 @@ public class DisruptionStatsTest {
     public void testDisruptionsStatsCumulativeLateSetMethod() {
         disruptionStats.setCumulativeLate(789123);
         Assertions.assertEquals(789123, disruptionStats.getCumulativeLate());
+    }
+
+    @Test
+    public void testDisruptionsStatsAverageDelayPerTrainSetMethod() {
+        disruptionStats.setAverageDelayPerTrain(12345);
+        Assertions.assertEquals(12345, disruptionStats.getAverageDelayPerTrain());
     }
 }

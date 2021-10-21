@@ -6,7 +6,6 @@ package ch.lucas.bot.cff.utils.exceptions;
  * @author Lucas-it@github
  */
 public class TweetMaximumLengthExceedException extends Exception {
-
     public TweetMaximumLengthExceedException() {
         this("The Tweet exceed the maximum length of 280 characters.", null);
     }
@@ -18,5 +17,4 @@ public class TweetMaximumLengthExceedException extends Exception {
     public TweetMaximumLengthExceedException(String message, Throwable cause) {
         super(message, cause);
     }
-
 }

@@ -1,7 +1,6 @@
 package ch.lucas.bot.cff.utils.cffapi;
 
 import ch.lucas.bot.cff.utils.Message;
-import ch.lucas.bot.cff.utils.TimeFormatter;
 import ch.lucas.bot.cff.utils.config.Config;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -29,9 +28,9 @@ import java.util.stream.StreamSupport;
  * @author Lucas-it@github
  */
 public class CFFApiUtils {
-    private final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-    private Config config;
+    private static final Logger LOGGER = LoggerFactory.getLogger(CFFApiUtils.class);
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private final Config config;
     private DisruptionStats disruptionStats;
     private int deletedTravels;
     private int totalTravels;
@@ -45,6 +44,7 @@ public class CFFApiUtils {
 
     /**
      * Get the information about disruptions from the SBB api about the precedent day.
+     *
      * @return a Message object
      * @throws InterruptedException error while connecting to the SBB API
      */
@@ -53,7 +53,7 @@ public class CFFApiUtils {
             try {
                 LOGGER.info("getInformationFromAPI - Get disruption statistics");
                 disruptionStats = getDisruptionStats();
-            } catch(IOException e) {
+            } catch (IOException e) {
                 LOGGER.error(e.getMessage(), e);
             }
         });
@@ -62,7 +62,7 @@ public class CFFApiUtils {
             try {
                 LOGGER.info("getInformationAPI - Get total number of deleted travels");
                 deletedTravels = getDeletedTravels();
-            } catch(IOException e) {
+            } catch (IOException e) {
                 LOGGER.error(e.getMessage(), e);
             }
         });
@@ -71,7 +71,7 @@ public class CFFApiUtils {
             try {
                 LOGGER.info("getInformationFromAPI - Get total number of travels");
                 totalTravels = getTotalTravels();
-            } catch(IOException e) {
+            } catch (IOException e) {
                 LOGGER.error(e.getMessage(), e);
             }
         });
@@ -86,21 +86,13 @@ public class CFFApiUtils {
         t2.join();
         t3.join();
 
-        // Date formatting
-        simpleDateFormat = new SimpleDateFormat("EEEE d MMMM yyyy");
-        // Calcul pourcentage of delayed travels
-        LOGGER.info("getInformationFromAPI - Calcul pourcentage of late travels");
-        double latePourcent = ((double) disruptionStats.getNumberOfDelayedTravels() / totalTravels) * 100;
-        // Calcul pourcentage of deleted travels
-        LOGGER.info("getInformationFromAPI - Calcul pourcentage of deleted travels");
-        double deletedPourcent = ((double) deletedTravels / totalTravels) * 100;
-        // Create a new message
         LOGGER.info("getInformationFromAPI - Create a new message with all information");
-        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000));
+        return new Message(new Date(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, disruptionStats.getAverageDelayPerTrain() / 1000, disruptionStats.getCumulativeLate() / 1000);
     }
 
     /**
      * Get statistics about disruption. The number of delayed travels and the cumulated delay.
+     *
      * @return DisruptionStats
      * @throws IOException error while connecting to the SBB API
      */
@@ -122,16 +114,18 @@ public class CFFApiUtils {
 
     /**
      * Parse disruptions stats (number of late travels and cumulative late) from json provided by the API.
+     *
      * @param recordsLate json array of late trains
      * @return disruption stats
      */
     public DisruptionStats parseDisruptionStatsFromJson(JsonArray recordsLate) {
         long cumulativeLate = 0;
+        int averageDelayPerTrain = 0;
         int numberOfDelayedTravels = 0;
         List<TrainLate> delayedTrains = new ArrayList<>();
 
         LOGGER.info("parseDisruptionStatsFromJson - Process late travels data");
-        for(JsonElement jsonElement : recordsLate) {
+        for (JsonElement jsonElement : recordsLate) {
             try {
                 String recordId = jsonElement.getAsJsonObject().get("recordid").getAsString();
                 JsonObject fields = jsonElement.getAsJsonObject().get("fields").getAsJsonObject();
@@ -141,12 +135,12 @@ public class CFFApiUtils {
                 Date arrivedDate = simpleDateFormat.parse(fields.get("an_prognose").getAsString());
 
                 delayedTrains.add(new TrainLate(recordId, stopName, lineId, arrivedDate, arrivedProgrammedDate));
-            } catch(ParseException e) {
+            } catch (ParseException e) {
                 LOGGER.error(e.getMessage(), e);
             }
         }
 
-        // Group every trains stop by lineId (int)
+        // Group every train stop by lineId (int)
         Map<Integer, List<TrainLate>> delayedTrainsPerLineId = delayedTrains.parallelStream().collect(Collectors.groupingBy(TrainLate::getLineId));
 
         // Calculate the cumulated delay
@@ -155,14 +149,17 @@ public class CFFApiUtils {
                 .map(e -> Collections.max(e.getValue(), Comparator.comparing(TrainLate::getArrivedProgrammedDate)))
                 .mapToLong(delayedTrain -> delayedTrain.getArrivedDate().getTime() - delayedTrain.getArrivedProgrammedDate().getTime()).sum();
 
+        averageDelayPerTrain = (int) cumulativeLate / delayedTrainsPerLineId.size();
+
         numberOfDelayedTravels = delayedTrainsPerLineId.size();
 
         LOGGER.info("parseDisruptionStatsFromJson - Late travels data processed");
-        return new DisruptionStats(numberOfDelayedTravels, cumulativeLate);
+        return new DisruptionStats(numberOfDelayedTravels, averageDelayPerTrain, cumulativeLate);
     }
 
     /**
      * Get the number of deleted travels.
+     *
      * @return number of deleted travels
      * @throws IOException error while connecting to the SBB API
      */
@@ -184,6 +181,7 @@ public class CFFApiUtils {
 
     /**
      * Parse number of deleted travels from json provided by the API.
+     *
      * @param recordsDeleted json array of deleted travels
      * @return number of deleted travels
      */
@@ -192,11 +190,11 @@ public class CFFApiUtils {
         int lastLineId = 0;
 
         LOGGER.info("parseDeletedTravelsFromJson - Process deleted travels data");
-        for(JsonElement jsonElement : recordsDeleted) {
+        for (JsonElement jsonElement : recordsDeleted) {
             JsonObject fields = jsonElement.getAsJsonObject().get("fields").getAsJsonObject();
             int lineId = fields.get("linien_id").getAsInt();
 
-            if(lastLineId != lineId) {
+            if (lastLineId != lineId) {
                 nbrOfDeletedTravels++;
             }
 
@@ -210,6 +208,7 @@ public class CFFApiUtils {
     /**
      * Get total travels of the precedent day.
      * Every time a train leave a departure station and arrived at the terminus it's one travel.
+     *
      * @return the number of travel
      * @throws IOException error while connecting to the SBB API
      */
@@ -231,6 +230,7 @@ public class CFFApiUtils {
 
     /**
      * Parse number of total travels from json provided by the API.
+     *
      * @param travels json array of all travels
      * @return number of travels
      */
@@ -239,7 +239,7 @@ public class CFFApiUtils {
 
         LOGGER.info("parseTotalTravelsFromJson - Process number of travels");
         StreamSupport.stream(travels.spliterator(), true).parallel().map(r -> r.getAsJsonObject().get("fields").getAsJsonObject().get("linien_id").getAsInt()).forEach(l -> {
-            if(!linesId.contains(l)) linesId.add(l);
+            if (!linesId.contains(l)) linesId.add(l);
         });
 
         int nbrOfTravels = linesId.size();
