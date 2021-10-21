@@ -96,11 +96,11 @@ public class CFFApiUtils {
         double deletedPourcent = ((double) deletedTravels / totalTravels) * 100;
         // Create a new message
         LOGGER.info("getInformationFromAPI - Create a new message with all information");
-        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000));
+        return new Message(simpleDateFormat.format(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, (double) Math.round(latePourcent * 100) / 100, (double) Math.round(deletedPourcent * 100) / 100, TimeFormatter.convertSecondsToTime(disruptionStats.getCumulativeLate() / 1000), disruptionStats.getAverageDelayPerTrain() / 1000);
     }
 
     /**
-     * Get statistics about disruption. The number of delayed travels and the cumulated delay.
+     * Get statistics about disruption. The number of delayed travels, the cumulated delay (in milliseconds) and the average delay per train (in milliseconds).
      * @return DisruptionStats
      * @throws IOException error while connecting to the SBB API
      */
@@ -128,6 +128,7 @@ public class CFFApiUtils {
     public DisruptionStats parseDisruptionStatsFromJson(JsonArray recordsLate) {
         long cumulativeLate = 0;
         int numberOfDelayedTravels = 0;
+        int averageDelayPerTrain = 0;
         List<TrainLate> delayedTrains = new ArrayList<>();
 
         LOGGER.info("parseDisruptionStatsFromJson - Process late travels data");
@@ -146,7 +147,7 @@ public class CFFApiUtils {
             }
         }
 
-        // Group every trains stop by lineId (int)
+        // Group every train stop by lineId (int)
         Map<Integer, List<TrainLate>> delayedTrainsPerLineId = delayedTrains.parallelStream().collect(Collectors.groupingBy(TrainLate::getLineId));
 
         // Calculate the cumulated delay
@@ -157,8 +158,10 @@ public class CFFApiUtils {
 
         numberOfDelayedTravels = delayedTrainsPerLineId.size();
 
+        averageDelayPerTrain = delayedTrains.parallelStream().reduce(0, (a, b) -> a + Math.toIntExact(b.getArrivedDate().getTime() - b.getArrivedProgrammedDate().getTime()), Integer::sum) / delayedTrains.size();
+
         LOGGER.info("parseDisruptionStatsFromJson - Late travels data processed");
-        return new DisruptionStats(numberOfDelayedTravels, cumulativeLate);
+        return new DisruptionStats(numberOfDelayedTravels, cumulativeLate, averageDelayPerTrain);
     }
 
     /**
