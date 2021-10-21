@@ -1,5 +1,6 @@
 package ch.lucas.bot.cff;
 
+import ch.lucas.bot.cff.utils.Message;
 import ch.lucas.bot.cff.utils.cffapi.CFFApiUtils;
 import ch.lucas.bot.cff.utils.config.Config;
 import ch.lucas.bot.cff.utils.exceptions.TweetMaximumLengthExceedException;
@@ -8,9 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Locale;
 
 /**
- * Principal class of the project. It run the process to tweet the information about disruption.
+ * Principal class of the project. It runs the process to tweet the information about disruption.
  *
  * @author Lucas-it@github
  */
@@ -48,7 +50,8 @@ public class CFFIsAJoke {
         long start = System.currentTimeMillis();
 
         try {
-            twit.tweet(new CFFApiUtils(config).getInformationFromAPI().getFormattedMessage());
+            Message message = new CFFApiUtils(config).getInformationFromAPI();
+            twit.tweet(message.getFormattedMessage(Locale.FRENCH), message.getFormattedMessage(Locale.GERMAN));
             LOGGER.info("The Tweet has been posted");
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);

@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 public class DisruptionStatsTest {
     private final int nbrOfDelayedTravels = 200;
-    private final long cumulativeLate = 100000L;
     private final int averageDelayPerTrain = 4;
-    private final DisruptionStats disruptionStats = new DisruptionStats(nbrOfDelayedTravels, cumulativeLate, averageDelayPerTrain);
+    private final long cumulativeLate = 100000L;
+    private final DisruptionStats disruptionStats = new DisruptionStats(nbrOfDelayedTravels, averageDelayPerTrain, cumulativeLate);
 
     @Test
     public void testDisruptionStatsNbrOfDeletedTravels() {
