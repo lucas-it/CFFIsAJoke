@@ -102,8 +102,9 @@ public class Twit {
                 }
             });
         } else {
+            String tweets = String.join("\n", messages);
             LOGGER.info("tweet - The bot is not allowed to post tweet (change config.json). The tweet is below :");
-            LOGGER.info("\n{} \n {}", parentMessage, String.join("\n", messages));
+            LOGGER.info("\n{} \n {}", parentMessage, tweets);
         }
     }
 
