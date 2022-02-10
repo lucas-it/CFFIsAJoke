@@ -2,6 +2,7 @@ package ch.lucas.bot.cff.utils;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,6 +18,7 @@ public class MessageTest {
     private final double percentageOfDeletedTravels = 5.0;
     private final long cumulatedDelay = 13 * 24 * 60 * 60 + 24 * 60; // 13 days, 21 minutes
     private final long averageDelayPerTrain = 4;
+    private final DecimalFormat percentageFormatter = new DecimalFormat("#.##");
     private final Message underTest = new Message(dateOfReport, nbrOfTravels, nbrOfDelayedTravels, nbrOfDeletedTravels, averageDelayPerTrain, cumulatedDelay);
 
     @Test
@@ -66,8 +68,8 @@ public class MessageTest {
         assertTrue(underTest.contains(nbrOfTravels + ""));
         assertTrue(underTest.contains(nbrOfDelayedTravels + ""));
         assertTrue(underTest.contains(nbrOfDeletedTravels + ""));
-        assertTrue(underTest.contains(percentageOfDelayedTravels + ""));
-        assertTrue(underTest.contains(percentageOfDeletedTravels + ""));
+        assertTrue(underTest.contains(percentageFormatter.format(percentageOfDelayedTravels)));
+        assertTrue(underTest.contains(percentageFormatter.format(percentageOfDeletedTravels)));
         assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(averageDelayPerTrain, Locale.FRENCH)));
         assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(cumulatedDelay, Locale.FRENCH)));
     }
@@ -79,8 +81,8 @@ public class MessageTest {
         assertTrue(underTest.contains(nbrOfTravels + ""));
         assertTrue(underTest.contains(nbrOfDelayedTravels + ""));
         assertTrue(underTest.contains(nbrOfDeletedTravels + ""));
-        assertTrue(underTest.contains(percentageOfDelayedTravels + ""));
-        assertTrue(underTest.contains(percentageOfDeletedTravels + ""));
+        assertTrue(underTest.contains(percentageFormatter.format(percentageOfDelayedTravels)));
+        assertTrue(underTest.contains(percentageFormatter.format(percentageOfDeletedTravels)));
         assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(averageDelayPerTrain, Locale.GERMAN)));
         assertTrue(underTest.contains(TimeFormatter.convertSecondsToTime(cumulatedDelay, Locale.GERMAN)));
     }
