@@ -20,6 +20,7 @@ public class Message {
     private final double percentageOfDelayedTravels;
     private final double percentageOfDeletedTravels;
     private final DecimalFormat decimalFormatter = new DecimalFormat("#,###");
+    private final DecimalFormat percentageFormatter = new DecimalFormat("#.##");
 
     /**
      * Create a new message with information about disruptions.
@@ -130,16 +131,16 @@ public class Message {
             dateFormatter = new SimpleDateFormat("EEEE d MMMM yyyy", locale);
             result = "Retards #CFF #SBB #FFS du " + dateFormatter.format(getDateOfReport()) + "\n\n";
             result += "\uD83D\uDE86 Nombre de voyages: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
-            result += "⏰ Trains en retard: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + getPercentageOfDelayedTravels() + " %)" + "\n";
-            result += "\uD83D\uDDD1️ Trains supprimés: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + getPercentageOfDeletedTravels() + " %)" + "\n";
+            result += "⏰ Trains en retard: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + percentageFormatter.format(getPercentageOfDelayedTravels()) + " %)" + "\n";
+            result += "\uD83D\uDDD1️ Trains supprimés: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + percentageFormatter.format(getPercentageOfDeletedTravels()) + " %)" + "\n";
             result += "\uD83D\uDE89 Retard moyen par train: " + averageDelayPerTrainFormatted + "\n";
             result += "⏱ Retard cumulé: " + cumulatedDelayFormatted + "\n";
         } else if (locale == Locale.GERMAN) {
             dateFormatter = new SimpleDateFormat("EEEE d'.' MMMM yyyy", locale);
             result = "Verzögerungen #CFF #SBB #FFS ab " + dateFormatter.format(getDateOfReport()) + "\n\n";
             result += "\uD83D\uDE86 Anzahl der Fahrten: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
-            result += "⏰ Verspätete Züge: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + getPercentageOfDelayedTravels() + " %)" + "\n";
-            result += "\uD83D\uDDD1️ Gelöschte Züge: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + getPercentageOfDeletedTravels() + " %)" + "\n";
+            result += "⏰ Verspätete Züge: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + percentageFormatter.format(getPercentageOfDelayedTravels()) + " %)" + "\n";
+            result += "\uD83D\uDDD1️ Gelöschte Züge: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + percentageFormatter.format(getPercentageOfDelayedTravels()) + " %)" + "\n";
             result += "\uD83D\uDE89 Durchschnittliche Verspätung pro Zug: " + averageDelayPerTrainFormatted + "\n";
             result += "⏱ Kumulative Verzögerung: " + cumulatedDelayFormatted + "\n";
         }
