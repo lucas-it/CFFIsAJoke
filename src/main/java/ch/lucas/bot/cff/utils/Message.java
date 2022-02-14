@@ -140,7 +140,7 @@ public class Message {
             result = "Verzögerungen #CFF #SBB #FFS ab " + dateFormatter.format(getDateOfReport()) + "\n\n";
             result += "\uD83D\uDE86 Anzahl der Fahrten: " + decimalFormatter.format(getNbrOfTravels()) + "\n";
             result += "⏰ Verspätete Züge: " + decimalFormatter.format(getNbrOfDelayedTravels()) + " (" + percentageFormatter.format(getPercentageOfDelayedTravels()) + " %)" + "\n";
-            result += "\uD83D\uDDD1️ Gelöschte Züge: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + percentageFormatter.format(getPercentageOfDelayedTravels()) + " %)" + "\n";
+            result += "\uD83D\uDDD1️ Gelöschte Züge: " + decimalFormatter.format(getNbrOfDeletedTravels()) + " (" + percentageFormatter.format(getPercentageOfDeletedTravels()) + " %)" + "\n";
             result += "\uD83D\uDE89 Durchschnittliche Verspätung pro Zug: " + averageDelayPerTrainFormatted + "\n";
             result += "⏱ Kumulative Verzögerung: " + cumulatedDelayFormatted + "\n";
         }
