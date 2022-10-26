@@ -87,7 +87,7 @@ public class CFFApiUtils {
         t3.join();
 
         LOGGER.info("getInformationFromAPI - Create a new message with all information");
-        return new Message(new Date(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, disruptionStats.getAverageDelayPerTrain() / 1000, disruptionStats.getCumulativeLate() / 1000);
+        return new Message(new Date(System.currentTimeMillis() - 86400000), totalTravels, disruptionStats.getNumberOfDelayedTravels(), deletedTravels, (disruptionStats.getCumulativeLate() / totalTravels) / 1000, disruptionStats.getCumulativeLate() / 1000);
     }
 
     /**
@@ -120,7 +120,6 @@ public class CFFApiUtils {
      */
     public DisruptionStats parseDisruptionStatsFromJson(JsonArray recordsLate) {
         long cumulativeLate = 0;
-        int averageDelayPerTrain = 0;
         int numberOfDelayedTravels = 0;
         List<TrainLate> delayedTrains = new ArrayList<>();
 
@@ -149,12 +148,10 @@ public class CFFApiUtils {
                 .map(e -> Collections.max(e.getValue(), Comparator.comparing(TrainLate::getArrivedProgrammedDate)))
                 .mapToLong(delayedTrain -> delayedTrain.getArrivedDate().getTime() - delayedTrain.getArrivedProgrammedDate().getTime()).sum();
 
-        averageDelayPerTrain = (int) cumulativeLate / delayedTrainsPerLineId.size();
-
         numberOfDelayedTravels = delayedTrainsPerLineId.size();
 
         LOGGER.info("parseDisruptionStatsFromJson - Late travels data processed");
-        return new DisruptionStats(numberOfDelayedTravels, averageDelayPerTrain, cumulativeLate);
+        return new DisruptionStats(numberOfDelayedTravels, cumulativeLate);
     }
 
     /**

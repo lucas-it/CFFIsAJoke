@@ -20,7 +20,6 @@ public class CFFApiUtilsTest {
         DisruptionStats underTest = cffApiUtils.parseDisruptionStatsFromJson(disruptionsJson);
 
         assertEquals(9, underTest.getNumberOfDelayedTravels());
-        assertEquals(840777, underTest.getAverageDelayPerTrain());
         assertEquals(7567000, underTest.getCumulativeLate());
     }
 
